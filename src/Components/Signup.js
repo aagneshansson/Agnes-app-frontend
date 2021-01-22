@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { signup } from '../reducers/fetch';
-
+import { signupfetch } from '../reducers/fetch';
+import { Profile } from './Profile.js';
 
 export const Signup = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [password, setPassword ] = useState("");
 
+    const accessToken = useSelector((store) => store.user.login.accessToken);
+
     //Sign up a user 
     const handleSignup = (event) => {
-        event.preventDefault();
-        dispatch(signup(name, password))
+        // event.preventDefault();
+        dispatch(signupfetch(name, password))
     };
 
     return (
@@ -25,6 +27,7 @@ export const Signup = () => {
                 type="text"
                 value={name}
                 onChange={event => setName(event.target.value)} 
+                
                 />
 
             </label>

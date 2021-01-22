@@ -17,7 +17,7 @@ export const App = () => {
     <div>
       <Provider store={store}>
         <Signup />
-        
+        <Statusmessage />
     </Provider>
     </div>
   )

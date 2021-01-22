@@ -24,6 +24,12 @@ export const user = createSlice({
             const { statusMessage } = action.payload;
             state.login.statusMessage = statusMessage;
         },
+        setErrorMessage: (state, action) => {
+            state.login.userId = 0;
+            state.login.accessToken = null;
+            state.login.secretMessage = null;
+        },
     }
 
 })
+
