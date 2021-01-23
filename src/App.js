@@ -6,7 +6,9 @@ import { user } from 'reducers/user.js';
 //import styled from 'styled-components';
 
 import { Signup } from './Components/Signup.js'
-import { Statusmessage } from './Components/Statusmessage.js'
+import { StatusMessage } from './Components/Statusmessage.js'
+import { Signin } from 'Components/Signin.js';
+import { Journey } from 'Components/Journey.js';
 
 
 const reducer = combineReducers({ user: user.reducer })
@@ -17,7 +19,8 @@ export const App = () => {
     <div>
       <Provider store={store}>
         <Signup />
-        <Statusmessage />
+        <Signin />
+        <StatusMessage />
     </Provider>
     </div>
   )

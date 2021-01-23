@@ -4,8 +4,9 @@ const initialState = {
     login: { 
         accessToken: null,
         userId: 0,
-        Statusmessage: "",
-    },
+        statusMessage: "",
+        errorMessage: null,
+    }
 };
 
 export const user = createSlice({
@@ -20,7 +21,7 @@ export const user = createSlice({
             const { userId } = action.payload;
             state.login.userId = userId;
         },
-        setStatusmessage: (state, action) => {
+        setStatusMessage: (state, action) => {
             const { statusMessage } = action.payload;
             state.login.statusMessage = statusMessage;
         },
@@ -32,4 +33,3 @@ export const user = createSlice({
     }
 
 })
-

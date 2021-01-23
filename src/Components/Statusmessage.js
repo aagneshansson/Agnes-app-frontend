@@ -1,18 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { user } from '../reducers/user.js'
 
 //import styled from 'styled-components/macro';
 
-export const Statusmessage = () => {
+export const StatusMessage = () => {
   const statusMessage = useSelector((store) => store.user.login.statusMessage);
   const errorMessage = useSelector((store) => store.user.login.errorMessage);
 
   return (
     <>
-    <p>This is how your signup went</p>
       {statusMessage && (
         <div>
-          <p>{`${statusMessage}`}</p>
+          <p>{`Statusmessage:${statusMessage}`}</p>
         </div>
       )}
       {errorMessage && (
