@@ -1,18 +1,43 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { addprojectfetch } from '../reducers/fetch';
+// import { addprojectfetch } from '../reducers/fetch';
+import { user } from '../reducers/user.js'
+
+const ADDPROJECT_URL = 'http://localhost:8080/project';
 
 export const Addproject = () => {
     const dispatch = useDispatch();
     const [projectname, setProjectname] = useState("");
     const accessToken = useSelector((store) => store.user.login.accessToken);
 
-    const handleAddproject = (event) => {
-        event.preventDefault();
-        dispatch(addprojectfetch(projectname))
-    };
+    // const handleAddproject = (event) => {
+    //     event.preventDefault();
+    //     dispatch(addprojectfetch(projectname))
+    // };
 
-    if (accessToken)
+    const addprojectfetch = () => {
+            fetch(ADDPROJECT_URL,
+            {
+                method: "POST",
+                body: JSON.stringify({ projectname }),
+                  // Include the accessToken to get the protected endpoint
+                headers: { Authorization: accessToken },
+            })
+            .then((res) => {
+                if (!res.ok) {
+                    throw 'Unable to add project';
+                }
+                return res.json();
+            })
+            .then((json) => {
+                dispatch(user.actions.setNewProject({ projectname: json.projectname }));
+            })
+            .catch((err) => {
+                dispatch(user.actions.setErrorMessage({ errorMessage: err }));
+            })
+        }
+
+    // if (accessToken)
     return (
         <div>
             <form>
@@ -25,7 +50,7 @@ export const Addproject = () => {
                     value={projectname}
                     onChange={event => setProjectname(event.target.value)}
                     />
-                    <button type="submit" onClick={handleAddproject}>Add project!</button>
+                    <button type="submit" onClick={addprojectfetch}>Add project!</button>
                 </label>
             </form>
         </div>

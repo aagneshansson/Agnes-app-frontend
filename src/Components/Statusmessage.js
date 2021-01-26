@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { user } from '../reducers/user.js'
 
 //import styled from 'styled-components/macro';
 

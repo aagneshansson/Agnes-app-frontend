@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { signupfetch } from '../reducers/fetch';
 
 export const Signup = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
-    const accessToken = useSelector((store) => store.user.login.accessToken);
-
 
     //Sign up a user 
     const handleSignup = (event) => {

@@ -30,6 +30,10 @@ export const user = createSlice({
             state.login.accessToken = null;
             state.login.secretMessage = null;
         },
+        setNewProject: (state, action) => {
+            const  { projectname } = action.payload;
+            state.login.projectname = projectname;
+        }
     }
 
 })
