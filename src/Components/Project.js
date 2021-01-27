@@ -11,14 +11,15 @@ export const Addproject = () => {
     const accessToken = useSelector((store) => store.user.login.accessToken);
 
     const handleAddproject = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
    
             fetch(ADDPROJECT_URL,
             {
                 method: "POST",
                 body: JSON.stringify({ projectname }),
                   // Include the accessToken to get the protected endpoint
-                headers: { Authorization: accessToken },
+                // headers: { Authorization: accessToken },
+                headers: { Authorization: accessToken, 'Content-Type':'application/json' },
             })
             .then((res) => {
                 if (!res.ok) {
