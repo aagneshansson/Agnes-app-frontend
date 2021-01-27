@@ -10,12 +10,9 @@ export const Addproject = () => {
     const [projectname, setProjectname] = useState("");
     const accessToken = useSelector((store) => store.user.login.accessToken);
 
-    // const handleAddproject = (event) => {
-    //     event.preventDefault();
-    //     dispatch(addprojectfetch(projectname))
-    // };
-
-    const addprojectfetch = () => {
+    const handleAddproject = (event) => {
+        event.preventDefault();
+   
             fetch(ADDPROJECT_URL,
             {
                 method: "POST",
@@ -35,8 +32,7 @@ export const Addproject = () => {
             .catch((err) => {
                 dispatch(user.actions.setErrorMessage({ errorMessage: err }));
             })
-        }
-
+    }
     // if (accessToken)
     return (
         <div>
@@ -50,7 +46,7 @@ export const Addproject = () => {
                     value={projectname}
                     onChange={event => setProjectname(event.target.value)}
                     />
-                    <button type="submit" onClick={addprojectfetch}>Add project!</button>
+                    <button type="submit" onClick={handleAddproject}>Add project!</button>
                 </label>
             </form>
         </div>
