@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-// import { addprojectfetch } from '../reducers/fetch';
 import { user } from '../reducers/user.js'
 
 const ADDPROJECT_URL = 'http://localhost:8080/project';

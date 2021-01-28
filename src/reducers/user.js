@@ -33,7 +33,10 @@ export const user = createSlice({
         setNewProject: (state, action) => {
             const  { projectname } = action.payload;
             state.login.projectname = projectname;
+        },
+        logout: () => {
+            return initialState
+        },
         }
-    }
 
 })

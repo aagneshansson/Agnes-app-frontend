@@ -10,9 +10,10 @@ import thunk from 'redux-thunk';
 import { user } from 'reducers/user.js';
 //import styled from 'styled-components';
 
-import { Signup } from './Components/Signup.js'
-import { StatusMessage } from './Components/Statusmessage.js'
-import { Signin } from 'Components/Signin.js';
+import { Journey } from './Components/Journey.js';
+// import { Signup } from './Components/Signup.js'
+// import { StatusMessage } from './Components/Statusmessage.js'
+// import { Signin } from 'Components/Signin.js';
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -46,9 +47,10 @@ export const App = () => {
   return (
     <div>
       <Provider store={store}>
-        <Signup />
+        <Journey />
+        {/* <Signup />
         <Signin />
-        <StatusMessage />
+        <StatusMessage /> */}
     </Provider>
     </div>
   )

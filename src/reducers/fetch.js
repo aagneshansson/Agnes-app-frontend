@@ -2,7 +2,7 @@ import { user } from './user.js'
 
 const SIGNUP_URL = 'http://localhost:8080/users';
 const SIGNIN_URL = 'http://localhost:8080/sessions';
-// const ADDPROJECT_URL = 'http://localhost:8080/project';
+const LOGOUT_URL = 'http://localhost:8080/logout';
 
 export const signupfetch = ( name, password ) => { 
 
@@ -57,6 +57,29 @@ export const signinfetch = (name, password) => {
           });
     }
 }
+
+export const logoutfetch = (accessToken) => {
+    return (dispatch) => {
+        fetch(LOGOUT_URL, 
+            {
+                method: 'POST',
+                headers: { Authorization: accessToken },
+            })
+            .then((res) => {
+                if (!res.ok) {
+                    throw 'Failed to logout';
+                }
+                return res.json();
+            })
+            .then((json) => {
+                dispatch(user.actions.setStatusMessage({ statusMessage: 'Successful Log out!' }));
+                dispatch(user.actions.logout());
+            })
+            .catch((err) => {
+                dispatch(user.actions.setErrorMessage({ errorMessage: err }));
+            })
+        }
+    }
 
 // export const addprojectfetch = ( projectname, accessToken ) => {
 

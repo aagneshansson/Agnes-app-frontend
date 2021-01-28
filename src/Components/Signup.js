@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { signupfetch } from '../reducers/fetch';
+import {Mainwrapper} from '../Styling/Globalstyling';
 
 export const Signup = () => {
     const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export const Signup = () => {
     };
 
     return (
-        <div>
+        <Mainwrapper>
             <form>
             <h1>Sign up</h1>
             <label>
@@ -40,6 +41,6 @@ export const Signup = () => {
             </label>
             <button type="submit" onClick={handleSignup}>Sign Up!</button>
             </form>
-        </div>
+        </Mainwrapper>
 )
 }
