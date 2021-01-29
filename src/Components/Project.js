@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { user } from '../reducers/user.js'
+import { Mainwrapper, Heading, Form, Button, Label, Input } from '../Styling/Globalstyling';
 
 const ADDPROJECT_URL = 'http://localhost:8080/project';
 
@@ -35,20 +36,20 @@ export const Addproject = () => {
     }
     // if (accessToken)
     return (
-        <div>
-            <form>
-                <h1>Add project</h1>
-                <label>
-                    <input
+        <Mainwrapper>
+            <Form>
+                <Heading>Add project</Heading>
+                <Label>
+                    <Input
                     required
                     placeholder="Project name"
                     type="text"
                     value={projectname}
                     onChange={event => setProjectname(event.target.value)}
                     />
-                    <button type="submit" onClick={handleAddproject}>Add project!</button>
-                </label>
-            </form>
-        </div>
+                    <Button type="submit" onClick={handleAddproject}>Add project!</Button>
+                </Label>
+            </Form>
+        </Mainwrapper>
     )
 }

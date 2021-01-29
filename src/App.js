@@ -11,9 +11,9 @@ import { user } from 'reducers/user.js';
 //import styled from 'styled-components';
 
 import { Journey } from './Components/Journey.js';
-// import { Signup } from './Components/Signup.js'
-// import { StatusMessage } from './Components/Statusmessage.js'
-// import { Signin } from 'Components/Signin.js';
+import { Signup } from './Components/Signup.js'
+import { StatusMessage } from './Components/Statusmessage.js'
+import { Signin } from 'Components/Signin.js';
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -47,10 +47,10 @@ export const App = () => {
   return (
     <div>
       <Provider store={store}>
-        <Journey />
-        {/* <Signup />
+        {/* <Journey /> */}
+        <Signup />
         <Signin />
-        <StatusMessage /> */}
+        <StatusMessage />
     </Provider>
     </div>
   )
