@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Mainwrapper } from '../Styling/Globalstyling.js';
+import { Mainwrapper, Heading, FileIMG, Italic } from '../Styling/Globalstyling.js';
+import { user } from '../reducers/user.js'
+import file from '../Assets/file.png';
 
 // import moment from 'moment'; --> This makes the "createdat" looks much prettier
 
@@ -10,33 +12,13 @@ export const Projectlist = () => {
     const dispatch = useDispatch();
     const accessToken = useSelector((store) => store.user.login.accessToken);
 
-    // const handleProjectlist = () => {
-
-    //   fetch(PROJECTLIST_URL,
-    //     {
-    //       method: "GET",
-    //       body: JSON.stringify({  }),
-    //       headers: { Authorization: accessToken, "Content-Type": "application/json" }
-    //     })
-    //     .then((res) => {
-    //       if (res.ok) {
-    //         throw 'unable to show projectlist'
-    //       }
-    //       return res.json();
-    //     })
-    //     .catch((err) => {
-    //       dispatch(user.actions.setErrorMessage({ errorMessage: err }));
-    //   })
-    // }
     useEffect(() => {
         fetch(PROJECTLIST_URL,
           { 
             method: "GET",
             headers: { Authorization: accessToken, "Content-Type": "application/json" }
           })
-        .then((res) => {
-            return res.json();
-        })
+        .then((res) => res.json())
         .then((data) => {
 
             // Sorts projects on when created 
@@ -49,22 +31,30 @@ export const Projectlist = () => {
             const limitedProjects = filteredProjects.slice(0, 20);
 
             // Save the data to state
-            setProjects(limitedProjects);
+            console.log("OM du ser detta är det goda nyheter")
+            // setProjects(limitedProjects);
+            // .sort((a,b) => a.created > b.created).filter((projects) => projects.project).slice(0, 20)
+            setProjects(data)
         });
     }, []);
 
+    console.log("OM du ser detta är det tjohobra nyheter")
+
 return (
     <Mainwrapper>
-      {projects.map((project) => {
-        
+
+      <Heading>
+        Your current projects
+      </Heading>
+      {projects && projects.map((project) => {
+
         return (
           <div >
+            <Italic>Project: </Italic>
             <p>
-              List of projects:
-              {project.project}  
-              {project.projectname}            
+{project.projectname}            
             </p>
-            <p>projectlist</p>
+            <FileIMG src={file} alt=""></FileIMG>
           </div>
         );
       })}

@@ -24,9 +24,18 @@ color: red;
 `;
 
 export const Input = styled.input`
-border: none;`;
+border: none;
+border-radius: 25px;
+`;
 
 export const Button = styled.button`
 border-radius: 12px;
 border: none;
+`;
+
+export const FileIMG = styled.img`
+max-width: 15px;`;
+
+export const Italic = styled.p`
+font-style: italic; 
 `;
