@@ -12,10 +12,9 @@ const GETUSERS_URL = 'http://localhost:8080/allusers';
 export const Addproject = () => {
     const dispatch = useDispatch();
     const [projectname, setProjectname] = useState("");
-
-    //Correct? 
     const [members, setMembers] = useState([]); 
-    const [chosenUser, setChosenUser] = useState([]);
+    //Removed [] from state -> previous const [chosenUser, setChosenUser] = useState([]);
+    const [chosenUser, setChosenUser] = useState();
 
     const accessToken = useSelector((store) => store.user.login.accessToken);
 
@@ -42,16 +41,45 @@ export const Addproject = () => {
 
 
     const handleAddproject = (event) => {
-        //event.preventDefault();
+
+        const selectedMember = members.filter(
+            (member) => member.name === chosenUser
+          );
+    //event.preventDefault();
     //    members.filter({name: chosenMember})
 
-    fetch(ADDPROJECT_URL,
-            {
-                method: "POST",
-                body: JSON.stringify({ projectname, chosenUser }),
-                  // Include the accessToken to get the protected endpoint
-                headers: { Authorization: accessToken, 'Content-Type':'application/json' },
-            })
+    //MY FETCH THAT DID NOT WORK 
+    // fetch(ADDPROJECT_URL,
+    //         {
+    //             method: "POST",
+    //             body: JSON.stringify({ projectname, chosenUser }),
+    //               // Include the accessToken to get the protected endpoint
+    //             headers: { Authorization: accessToken, 'Content-Type':'application/json' },
+    //         })
+
+            //KARINS NEW FETCH 
+            fetch(ADDPROJECT_URL, {
+                method: 'POST',
+                body: JSON.stringify({
+                  projectname,
+                  memberId: selectedMember[0].memberId,
+                }),
+                // Include the accessToken to get the protected endpoint
+                headers: {
+                  Authorization: accessToken,
+                  'Content-Type': 'application/json',
+                },
+              })
+            // KARINS FETCH WHICH WORK 
+            // fetch(ADDPROJECT_URL, {
+            //     method: 'POST',
+            //     body: JSON.stringify({ projectname, memberId: chosenUser }),
+            //     // Include the accessToken to get the protected endpoint
+            //     headers: {
+            //       Authorization: accessToken,
+            //       'Content-Type': 'application/json',
+            //     },
+            //   })
             .then((res) => {
                 if (!res.ok) {
                     throw 'Unable to add project';
