@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Mainwrapper, Heading, FileIMG, Italic } from '../Styling/Globalstyling.js'
-import { user } from '../reducers/user.js'
 import file from '../Assets/file.png'
 
 // import moment from 'moment'; --> This makes the "createdat" looks much prettier

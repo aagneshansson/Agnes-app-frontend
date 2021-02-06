@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Mainwrapper, Heading, FileIMG, Italic } from '../Styling/Globalstyling.js'
+import { Mainwrapper, Heading, Italic } from '../Styling/Globalstyling.js'
 
 export const Memberprojectlist = () => {
   const MEMBERLIST_URL = 'http://localhost:8080/member'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineReducers } from "@reduxjs/toolkit";
 //import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
@@ -7,12 +7,13 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk';
 
 import { user } from 'reducers/user.js';
-//import styled from 'styled-components';
-
-import { Journey } from './Components/Journey.js';
 import { Signup } from './Components/Signup.js'
 import { StatusMessage } from './Components/Statusmessage.js'
 import { Signin } from 'Components/Signin.js';
+
+// Use this in route later :) 
+
+//const accessToken = useSelector((store) => store.user.login.accessToken);  --> take this back when implementing routes 
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -46,7 +47,13 @@ store.subscribe(() => {
 export const App = () => {
   return (
     <div>
-      <Provider store={store}>
+      <Provider store={store}> 
+      {/*path ="/" if statement 
+      useEffect should be triggered value is changed
+      add -> if 
+      usehistory history.push 
+      /}
+
         {/* <Journey /> */}
         <Signup />
         <Signin />
