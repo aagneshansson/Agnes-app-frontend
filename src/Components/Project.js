@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Autocomplete from 'react-autocomplete';
 //import Autocomplete from 'react-autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
 import { user } from '../reducers/user.js'
@@ -14,6 +15,7 @@ export const Addproject = () => {
 
     //Correct? 
     const [members, setMembers] = useState([]); 
+    const [chosenUser, setChosenUser] = useState([]);
 
     const accessToken = useSelector((store) => store.user.login.accessToken);
 
@@ -26,13 +28,14 @@ export const Addproject = () => {
             })
             .then((res) => res.json())
             .then((data) => {
-                // const member = data.map(member => {
-                //     return {
-                //         name: member.name,
-                //     }
-                // })
-            setMembers(data)
-            console.log(data)
+                const members = data.map(member => {
+                    return {
+                        name: member.name,
+                        memberId: member._id
+                    }
+                })
+            setMembers(members)
+            console.log(members)
 
             })
      }, [])
@@ -40,11 +43,12 @@ export const Addproject = () => {
 
     const handleAddproject = (event) => {
         //event.preventDefault();
-   
-            fetch(ADDPROJECT_URL,
+    //    members.filter({name: chosenMember})
+
+    fetch(ADDPROJECT_URL,
             {
                 method: "POST",
-                body: JSON.stringify({ projectname, members }),
+                body: JSON.stringify({ projectname, chosenUser }),
                   // Include the accessToken to get the protected endpoint
                 headers: { Authorization: accessToken, 'Content-Type':'application/json' },
             })
@@ -55,7 +59,7 @@ export const Addproject = () => {
                 return res.json();
             })
             .then((json) => {
-                dispatch(user.actions.setNewProject({ projectname: json.projectname, members: json.name }));
+                dispatch(user.actions.setNewProject({ projectname: json.projectname }));
             })
             .catch((err) => {
                 dispatch(user.actions.setErrorMessage({ errorMessage: err }));
@@ -75,22 +79,34 @@ export const Addproject = () => {
                     onChange={event => setProjectname(event.target.value)}
                     />
                     <Button type="submit" onClick={handleAddproject}>Dont press this button</Button>
-                    {/* Should I comment out this button? */}
                 </Label>
 
                 <Heading>Add member to your project</Heading>
 
-                {members.map(member => <p>{member.name}</p>)}
                     <Label>
                     <Input
                     type="text"
-                    value={members}
-                    onChange={event => setMembers(event.target.value)}
+                    placeholder="Who would you like to collaborate with?"
+                    value={chosenUser}
+                    onChange={event => setChosenUser(event.target.value)}
                     />
+                    {console.log(chosenUser)}
                     <Button type="submit" onClick={handleAddproject}>Press this button to add projectname+member</Button>
                     </Label>
 
+                {/* <Autocomplete 
+                
+                getItemValue={(item) => item.label}
+                items={members.map(member => <p>{member.name}</p>)}
 
+                renderItem={(item, isHighlighted) =>
+                    <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                      {item.label}
+                    </div>
+                  }
+                  value={members}
+                  onChange={(e) => setMembers(e.target.value)}
+                  /> */}
 
             </Form>
         </Mainwrapper>

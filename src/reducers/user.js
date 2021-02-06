@@ -33,6 +33,9 @@ export const user = createSlice({
         setNewProject: (state, action) => {
             const  { projectname } = action.payload;
             state.login.projectname = projectname;
+
+            const { memberId } = action.payload; 
+            state.login.memberId = memberId; 
         },
         logout: () => {
             return initialState
