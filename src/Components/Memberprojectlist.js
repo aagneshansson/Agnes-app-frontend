@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Mainwrapper, Heading, Italic } from '../Styling/Globalstyling.js'
+import { Mainwrapper, Heading, Projectwrapper } from '../Styling/Globalstyling.js'
 
 export const Memberprojectlist = () => {
   const MEMBERLIST_URL = 'http://localhost:8080/member'
@@ -18,7 +18,7 @@ export const Memberprojectlist = () => {
 
       setProjects(data)
       })
-  }, [])
+  }, [accessToken])
 
   return (
     <Mainwrapper>
@@ -29,12 +29,11 @@ export const Memberprojectlist = () => {
       {projects && projects.map((project) => {
 
         return (
-          <div >
-            <Italic>Project:</Italic>
-            <p>
+          <Projectwrapper key={project._id}>
+            <Heading>
               {project.projectname}
-            </p>
-          </div>
+            </Heading>
+          </Projectwrapper>
         )
       })}
     </Mainwrapper>

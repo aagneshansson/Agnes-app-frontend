@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Autocomplete from 'react-autocomplete';
 //import Autocomplete from 'react-autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
 import { user } from '../reducers/user.js'
@@ -13,7 +12,6 @@ export const Addproject = () => {
     const dispatch = useDispatch();
     const [projectname, setProjectname] = useState("");
     const [members, setMembers] = useState([]); 
-    //Removed [] from state -> previous const [chosenUser, setChosenUser] = useState([]);
     const [chosenUser, setChosenUser] = useState();
 
     const accessToken = useSelector((store) => store.user.login.accessToken);
@@ -37,7 +35,7 @@ export const Addproject = () => {
             console.log(members)
 
             })
-     }, [])
+     }, [accessToken])
 
 
     const handleAddproject = (event) => {
@@ -45,17 +43,6 @@ export const Addproject = () => {
         const selectedMember = members.filter(
             (member) => member.name === chosenUser
           );
-    //event.preventDefault();
-    //    members.filter({name: chosenMember})
-
-    //MY FETCH THAT DID NOT WORK 
-    // fetch(ADDPROJECT_URL,
-    //         {
-    //             method: "POST",
-    //             body: JSON.stringify({ projectname, chosenUser }),
-    //               // Include the accessToken to get the protected endpoint
-    //             headers: { Authorization: accessToken, 'Content-Type':'application/json' },
-    //         })
 
             //KARINS NEW FETCH 
             fetch(ADDPROJECT_URL, {
@@ -82,7 +69,7 @@ export const Addproject = () => {
             //   })
             .then((res) => {
                 if (!res.ok) {
-                    throw 'Unable to add project';
+                    throw new Error ('Unable to add project');
                 }
                 return res.json();
             })
@@ -106,7 +93,7 @@ export const Addproject = () => {
                     value={projectname}
                     onChange={event => setProjectname(event.target.value)}
                     />
-                    <Button type="submit" onClick={handleAddproject}>Dont press this button</Button>
+                    <Button type="submit" onClick={handleAddproject}>+</Button>
                 </Label>
 
                 <Heading>Add member to your project</Heading>
@@ -119,7 +106,7 @@ export const Addproject = () => {
                     onChange={event => setChosenUser(event.target.value)}
                     />
                     {console.log(chosenUser)}
-                    <Button type="submit" onClick={handleAddproject}>Press this button to add projectname+member</Button>
+                    <Button type="submit" onClick={handleAddproject}>Invite</Button>
                     </Label>
 
                 {/* <Autocomplete 

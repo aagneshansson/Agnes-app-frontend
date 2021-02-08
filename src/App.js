@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { combineReducers } from "@reduxjs/toolkit";
 //import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
@@ -11,10 +12,13 @@ import { Signup } from './Components/Signup.js'
 import { StatusMessage } from './Components/Statusmessage.js'
 import { Signin } from 'Components/Signin.js';
 
+import { Homepage } from 'Components/Homepage.js';
+import { Profile } from 'Components/Profile.js';
+import { Header } from 'Components/Header.js';
+import { Footer } from 'Components/Footer.js';
+import { Logout } from 'Components/Logout.js';
+
 // Use this in route later :) 
-
-//const accessToken = useSelector((store) => store.user.login.accessToken);  --> take this back when implementing routes 
-
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({ user: user.reducer });
@@ -44,21 +48,45 @@ store.subscribe(() => {
   localStorage.setItem('reduxStates', JSON.stringify(store.getState()));
 });
 
+
 export const App = () => {
   return (
     <div>
-      <Provider store={store}> 
+      <Provider store={store}>
+        <BrowserRouter>
       {/*path ="/" if statement 
       useEffect should be triggered value is changed
       add -> if 
       usehistory history.push 
-      /}
+      /}*/}
+        <Header /> 
+          <Switch>
+            <Route path="/" exact>
+              <Homepage />
+            </Route>
 
-        {/* <Journey /> */}
-        <Signup />
-        <Signin />
-        <StatusMessage />
+            <Route path="/signin" exact>
+              <Signin />
+            </Route>
 
+            <Route path="/signup" exact>
+              <Signup />
+            </Route>
+
+            <Route path="/profile" exact>
+              <Profile />
+            </Route>
+      
+            <Route path="/logout" exact>
+              <Logout />
+            </Route>
+
+            <Signup />
+            <Signin />
+            <StatusMessage />
+          </Switch> 
+        <Footer />
+        </BrowserRouter>
     </Provider>
     </div>
   )

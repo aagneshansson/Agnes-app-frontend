@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { signinfetch } from '../reducers/fetch';
-import { Profile } from './Profile.js';
 import { Mainwrapper, Button, Heading, Form, Label, Input } from '../Styling/Globalstyling';
-
+import { useHistory } from "react-router-dom";
 
 export const Signin = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const accessToken = useSelector((store) => store.user.login.accessToken);
@@ -15,9 +15,12 @@ export const Signin = () => {
     const handleSignin = (event) => {
         event.preventDefault();
         dispatch(signinfetch(name, password))
+
+        if (accessToken) {
+        history.push("/profile");
+        }
     };
 
-    if (!accessToken) {
     return (
             <Mainwrapper>
             <Form>
@@ -46,9 +49,9 @@ export const Signin = () => {
             </Form>
             </Mainwrapper>
     );
-} else {
-    return <Profile />
+// } else {
+//     return <Profile />
     
-}
+// }
 
 }

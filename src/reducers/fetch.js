@@ -15,7 +15,7 @@ export const signupfetch = ( name, password ) => {
         })
         .then((res) => {
             if (!res.ok) {
-              throw 'Unable to Sign Up.';
+              throw new Error ('Unable to Sign Up.');
             }
             return res.json();
             })
@@ -40,7 +40,7 @@ export const signinfetch = (name, password) => {
         })
         .then((res) => {
             if (!res.ok) {
-                throw 'Login failed'
+                throw new Error ('Login failed');
             }
                 return res.json();
         })
@@ -67,7 +67,7 @@ export const logoutfetch = (accessToken) => {
             })
             .then((res) => {
                 if (!res.ok) {
-                    throw 'Failed to logout';
+                    throw new Error ('Failed to logout');
                 }
                 return res.json();
             })
