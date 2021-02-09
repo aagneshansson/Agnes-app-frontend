@@ -16,7 +16,7 @@ export const Logout = () => {
     return (
         <Mainwrapper> 
         <P>Everything comes to an end... Click the button to logout!</P>
-        <Button onClick={handleLogout}>Log out!</Button>
+        <Button onClick={handleLogout}>Log out</Button>
         </Mainwrapper>
     )
 }

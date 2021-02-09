@@ -31,7 +31,6 @@ export const Profile = () => {
             </Column>
             
             </ProfileWrapper>
-            <Logout />
         </Mainwrapper>
     )
 }

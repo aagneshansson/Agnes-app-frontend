@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { Mainwrapper, Heading, Button, P } from '../Styling/Globalstyling';
+import { Mainwrapper, Heading, Button, H2 } from '../Styling/Globalstyling';
 import { Signup } from './Signup.js';
 import { Profile } from './Profile.js'
 
@@ -17,14 +17,13 @@ export const Homepage = () => {
   return (
     <Mainwrapper>
       <Heading>
-        Welcome to the planning app!
+        Organizing your life is just a click away!
       </Heading>
-      <P>Let's organize your life.</P>
 
       <Signup />
-      <Heading>Already a user?</Heading>
+      <H2>Already a user?</H2>
       <Link to="/signin">
-        <Button>Sign in!</Button>
+        <Button>Sign in</Button>
       </Link>
 
       </Mainwrapper>

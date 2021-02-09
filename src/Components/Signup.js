@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { signupfetch } from '../reducers/fetch';
-import { Mainwrapper, Button, Heading, Form, Label, Input } from '../Styling/Globalstyling';
+import { Mainwrapper, Button, H2, Form, Label, Input } from '../Styling/Globalstyling';
 
 export const Signup = () => {
     const dispatch = useDispatch();
@@ -18,11 +18,11 @@ export const Signup = () => {
     return (
         <Mainwrapper>
             <Form>
-            <Heading>Sign up</Heading>
+            <H2>Let's get started</H2>
             <Label>
                 <Input
                 required
-                placeholder="Name"
+                placeholder="Username"
                 type="text"
                 value={name}
                 onChange={event => setName(event.target.value)} 
@@ -33,13 +33,14 @@ export const Signup = () => {
             <Label>
                 <Input
                 required
+                placeholder="Password"
                 minLength="5"
                 type="password"
                 value={password}
                 onChange={event => setPassword(event.target.value)} 
                 />
             </Label>
-            <Button type="submit" onClick={handleSignup}>Sign Up!</Button>
+            <Button type="submit" onClick={handleSignup}>Start here</Button>
             </Form>
         </Mainwrapper>
 )

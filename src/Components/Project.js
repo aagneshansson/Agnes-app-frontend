@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 //import Autocomplete from 'react-autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
 import { user } from '../reducers/user.js'
-import { Mainwrapper, Heading, Form, Button, Label, Input } from '../Styling/Globalstyling';
+import { Mainwrapper, Heading, Form, Button, Label, Projectinput } from '../Styling/Globalstyling';
 const ADDPROJECT_URL = 'http://localhost:8080/project';
 const GETUSERS_URL = 'http://localhost:8080/allusers';
 
@@ -43,24 +43,29 @@ export const Addproject = () => {
         const selectedMember = members.filter(
             (member) => member.name === chosenUser
           );
+            
 
-            //KARINS NEW FETCH 
-            fetch(ADDPROJECT_URL, {
-                method: 'POST',
-                body: JSON.stringify({
-                  projectname,
-                  memberId: selectedMember[0].memberId,
-                }),
-                // Include the accessToken to get the protected endpoint
-                headers: {
-                  Authorization: accessToken,
-                  'Content-Type': 'application/json',
-                },
-              })
-            // KARINS FETCH WHICH WORK 
+          if (chosenUser === undefined) {
+            fetch(ADDPROJECT_URL, { method: 'POST', body: JSON.stringify({ projectname }), headers: { Authorization: accessToken, 'Content-Type': 'application/json',},
+              
+                  })} else 
+                  {fetch(ADDPROJECT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                      projectname,
+                      memberId: selectedMember[0].memberId
+                    }),
+                    // Include the accessToken to get the protected endpoint
+                    headers: {
+                      Authorization: accessToken,
+                      'Content-Type': 'application/json',
+                    }, })
             // fetch(ADDPROJECT_URL, {
             //     method: 'POST',
-            //     body: JSON.stringify({ projectname, memberId: chosenUser }),
+            //     body: JSON.stringify({
+            //       projectname,
+            //       memberId: selectedMember[0].memberId,
+            //     }),
             //     // Include the accessToken to get the protected endpoint
             //     headers: {
             //       Authorization: accessToken,
@@ -80,13 +85,14 @@ export const Addproject = () => {
                 dispatch(user.actions.setErrorMessage({ errorMessage: err }));
             })
     }
+}
 
     return (
         <Mainwrapper>
             <Form>
                 <Heading>Add project</Heading>
                 <Label>
-                    <Input
+                    <Projectinput
                     required
                     placeholder="Project name"
                     type="text"
@@ -99,7 +105,7 @@ export const Addproject = () => {
                 <Heading>Add member to your project</Heading>
 
                     <Label>
-                    <Input
+                    <Projectinput
                     type="text"
                     placeholder="Who would you like to collaborate with?"
                     value={chosenUser}

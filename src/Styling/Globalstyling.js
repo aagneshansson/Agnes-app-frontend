@@ -6,9 +6,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-margin: 5px;
-padding: 5px;
 text-align: center;
+margin: -1px;
 `;
 
 export const Label = styled.label`
@@ -24,6 +23,10 @@ export const Heading = styled.h1`
 color: #AC6EED;
 `;
 
+export const H2 = styled.h2`
+color: #AC6EED;
+`;
+
 export const P = styled.p`
 color: #E7D7F7;
 `;
@@ -31,6 +34,33 @@ color: #E7D7F7;
 export const Input = styled.input`
 border: none;
 border-radius: 25px;
+display: flex
+flex-direction: column; 
+align-items: center;
+width: 100px;
+margin: 5px;
+padding: 8px;
+border-radius: 25px;
+
+    @media (min-width: 667px){
+        width: 350px;
+    }
+`;
+
+export const Projectinput = styled.input`
+border: none;
+border-radius: 25px;
+display: flex
+flex-direction: column; 
+align-items: center;
+width: 100px;
+margin: 5px;
+padding: 8px;
+border-radius: 25px;
+
+    @media (min-width: 667px){
+    
+    }
 `;
 
 export const Button = styled.button`
@@ -41,10 +71,6 @@ cursor: pointer;
 
 export const FileIMG = styled.img`
 max-width: 15px;`;
-
-// export const Italic = styled.p`
-// font-style: italic; 
-// `;
 
 export const Projectwrapper = styled.div`
 padding: 10px;

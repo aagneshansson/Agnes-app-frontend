@@ -32,6 +32,8 @@ export const Memberprojectlist = () => {
           <Projectwrapper key={project._id}>
             <Heading>
               {project.projectname}
+              {console.log(project)}
+              {project.userId.name}
             </Heading>
           </Projectwrapper>
         )
@@ -39,3 +41,5 @@ export const Memberprojectlist = () => {
     </Mainwrapper>
   )
 }
+
+
