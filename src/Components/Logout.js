@@ -1,8 +1,14 @@
 import React from 'react';
-import { Mainwrapper, Button, P } from '../Styling/Globalstyling';
+import { Mainwrapper, RegisterButton, P } from '../Styling/Globalstyling';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutfetch } from '../reducers/fetch.js';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Logoutsection = styled.div`
+margin: 15px;
+padding: 15px; 
+`;
 
 export const Logout = () => {
     const dispatch = useDispatch();
@@ -13,10 +19,13 @@ export const Logout = () => {
         dispatch(logoutfetch(accessToken))
         history.push("/");
     }
+
     return (
-        <Mainwrapper> 
+        <Mainwrapper>
+           <Logoutsection>  
         <P>Everything comes to an end... Click the button to logout!</P>
-        <Button onClick={handleLogout}>Log out</Button>
+        <RegisterButton onClick={handleLogout}>Log out</RegisterButton>
+            </Logoutsection>
         </Mainwrapper>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { signupfetch } from '../reducers/fetch';
-import { Mainwrapper, Button, H2, Form, Label, Input } from '../Styling/Globalstyling';
+import { Mainwrapper, Button, H2, Form, Label, Input, RegisterButton } from '../Styling/Globalstyling';
 
 export const Signup = () => {
     const dispatch = useDispatch();
@@ -40,7 +40,7 @@ export const Signup = () => {
                 onChange={event => setPassword(event.target.value)} 
                 />
             </Label>
-            <Button type="submit" onClick={handleSignup}>Start here</Button>
+            <RegisterButton type="submit" onClick={handleSignup}>Start here</RegisterButton>
             </Form>
         </Mainwrapper>
 )

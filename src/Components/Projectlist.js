@@ -24,10 +24,10 @@ export const Projectlist = () => {
   }, [accessToken])
 
   return (
-    <Mainwrapper>
-      <Heading>
+    <>
+      {/* <Heading>
         Your current projects
-      </Heading>
+      </Heading> */}
       {projects && projects.map((project) => {
 
         return (
@@ -45,6 +45,6 @@ export const Projectlist = () => {
           </Projectwrapper>
         )
       })}
-    </Mainwrapper>
+    </>
   )
 }

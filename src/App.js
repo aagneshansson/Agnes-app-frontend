@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { combineReducers } from "@reduxjs/toolkit";
 //import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-
+import styled from 'styled-components';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk';
 
@@ -15,9 +15,15 @@ import { Signin } from 'Components/Signin.js';
 import { Homepage } from 'Components/Homepage.js';
 import { Profile } from 'Components/Profile.js';
 import { Header } from 'Components/Header.js';
+import { Addproject } from 'Components/Project.js';
 import { Footer } from 'Components/Footer.js';
 import { Logout } from 'Components/Logout.js';
 
+const AppWrapper = styled.section`
+  background: #51198C;
+  height: 100vh;
+}
+`;
 // Use this in route later :) 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -51,7 +57,7 @@ store.subscribe(() => {
 
 export const App = () => {
   return (
-    <div>
+    <AppWrapper>
       <Provider store={store}>
         <BrowserRouter>
       {/*path ="/" if statement 
@@ -73,6 +79,10 @@ export const App = () => {
               <Signup />
             </Route>
 
+            <Route path="/project" exact>
+              <Addproject />
+            </Route>
+
             <Route path="/profile" exact>
               <Profile />
             </Route>
@@ -85,9 +95,9 @@ export const App = () => {
             <Signin />
             <StatusMessage />
           </Switch> 
-        <Footer />
+        {/* <Footer /> */}
         </BrowserRouter>
     </Provider>
-    </div>
+    </AppWrapper>
   )
 }

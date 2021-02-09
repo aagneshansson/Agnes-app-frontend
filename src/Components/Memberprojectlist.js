@@ -21,14 +21,14 @@ export const Memberprojectlist = () => {
   }, [accessToken])
 
   return (
-    <Mainwrapper>
-
-      <Heading>
+    <>
+      {/* <Heading>
         Projects you are a member of
-      </Heading>
+      </Heading> */}
       {projects && projects.map((project) => {
 
         return (
+      
           <Projectwrapper key={project._id}>
             <Heading>
               {project.projectname}
@@ -38,7 +38,7 @@ export const Memberprojectlist = () => {
           </Projectwrapper>
         )
       })}
-    </Mainwrapper>
+    </>
   )
 }
 
