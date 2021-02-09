@@ -3,11 +3,30 @@ import { useHistory } from 'react-router-dom';
 //import Autocomplete from 'react-autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
 import { user } from '../reducers/user.js'
-import { Mainwrapper, Heading, Form, Button, Label, Input } from '../Styling/Globalstyling';
+import { ProjectInput, Heading, RegisterButton, Button, Label } from '../Styling/Globalstyling';
+import styled from 'styled-components'
 const ADDPROJECT_URL = 'http://localhost:8080/project';
 const GETUSERS_URL = 'http://localhost:8080/allusers';
 
 // 1) Add the "GET all users" fetch in this file and update the state from member -> setMember
+
+const AddProjectWrapper = styled.div`
+display: flex;
+flex-direction: column; 
+align-items: center;
+justify-content: center;
+`;
+
+const Form = styled.form`
+display: flex
+flex-direction: column; 
+align-items: center; 
+justify-content: center; 
+
+    @media (min-width: 667px){
+    }
+`;
+
 
 export const Addproject = () => {
     const dispatch = useDispatch();
@@ -39,13 +58,16 @@ export const Addproject = () => {
             })
      }, [accessToken])
 
-
+    const handleGoBack = () => {
+        history.push('/profile')
+    }
     const handleAddproject = (event) => {
+        history.push('/profile')
 
         const selectedMember = members.filter(
             (member) => member.name === chosenUser
           );
-            
+
 
           if (chosenUser === undefined) {
             fetch(ADDPROJECT_URL, { method: 'POST', body: JSON.stringify({ projectname }), headers: { Authorization: accessToken, 'Content-Type': 'application/json',},
@@ -62,6 +84,7 @@ export const Addproject = () => {
                       Authorization: accessToken,
                       'Content-Type': 'application/json',
                     },
+                    
                 })
             // fetch(ADDPROJECT_URL, {
             //     method: 'POST',
@@ -88,38 +111,35 @@ export const Addproject = () => {
             .catch((err) => {
                 dispatch(user.actions.setErrorMessage({ errorMessage: err }));
             })
-            history.push('/profile')
+            // history.push('/profile')
     }
 }
 
     return (
-        <>
+        <AddProjectWrapper>
             <Form>
                 <Heading>Add project</Heading>
                 <Label>
-                    <Input
+                    <ProjectInput
                     required
                     placeholder="Project name"
                     type="text"
                     value={projectname}
                     onChange={event => setProjectname(event.target.value)}
                     />
-                    <Button type="submit" onClick={handleAddproject}>+</Button>
                 </Label>
 
-                <Heading>Add member to your project</Heading>
-
-                    <Label>
-                    <Input
+                {/* <Heading>Add member to your project</Heading> */}
+                <Label>
+                    <ProjectInput
                     type="text"
-                    placeholder="Who would you like to collaborate with?"
+                    placeholder="Add collaborator"
                     value={chosenUser}
                     onChange={event => setChosenUser(event.target.value)}
                     />
                     {console.log(chosenUser)}
-                    <Button type="submit" onClick={handleAddproject}>Invite</Button>
-                    </Label>
-
+                </Label>
+                <RegisterButton type="submit" onClick={handleAddproject}>Create project</RegisterButton>
                 {/* <Autocomplete 
                 
                 getItemValue={(item) => item.label}
@@ -135,6 +155,10 @@ export const Addproject = () => {
                   /> */}
 
             </Form>
-        </>
+                <Button 
+                onClick={handleGoBack}>
+                    Back
+                </Button>
+        </AddProjectWrapper>
     )
 }

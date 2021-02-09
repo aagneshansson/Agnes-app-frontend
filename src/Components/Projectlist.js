@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Mainwrapper, Heading, FileIMG, Projectwrapper } from '../Styling/Globalstyling.js';
+import { Heading, FileIMG, Projectwrapper } from '../Styling/Globalstyling.js';
 import file from '../Assets/file.png';
 
 // import moment from 'moment'; --> This makes the "createdat" looks much prettier
@@ -24,7 +24,7 @@ export const Projectlist = () => {
   }, [accessToken])
 
   return (
-    <>
+   <>
       {/* <Heading>
         Your current projects
       </Heading> */}

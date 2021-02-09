@@ -1,30 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
 import { useSelector } from 'react-redux';
+
+import logo from '../Assets/logo.png';
 
 const Nav = styled.nav`
 display: flex;
-justify-content: flex-end;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
 position: relative;
-background: #51198C; 
+background: #51198C;
+padding: 8px;  
 `;
+
+const NavButtons = styled.div`
+display: flex;
+margin-right: 10px;
+`;
+
+export const LogoIMG = styled.img`
+width: 65px;
+height: 100%;
+margin-left: 10px;
+`;
+
 
 const H2dark = styled.h2`
 color: #51198C; 
 text-decoration: none;
 background-color: #E7D7F7;
-padding: 15px;
+padding: 10px;
 border-radius: 8px;
-margin-right: 15px;
 
 `;
 
 const H2light = styled.h2`
 color: #E7D7F7;
 padding: 10px;
-border-radius: 12px;
+border-radius: 8px;
 text-decoration: none;
 `;
 
@@ -32,8 +47,10 @@ export const Header = () => {
     const accessToken = useSelector((store) => store.user.login.accessToken);
 
     return (
-        <div>
         <Nav>
+            <LogoIMG src={logo} alt="OrganizeIt logo"></LogoIMG> 
+
+            <NavButtons>
             {accessToken && (
                 <>
                     <Link to="/logout">
@@ -52,8 +69,7 @@ export const Header = () => {
             </Link>
             </>
               )}              
-            
+            </NavButtons>
         </Nav>
-        </div>
     )
 }

@@ -22,9 +22,6 @@ export const Memberprojectlist = () => {
 
   return (
     <>
-      {/* <Heading>
-        Projects you are a member of
-      </Heading> */}
       {projects && projects.map((project) => {
 
         return (
