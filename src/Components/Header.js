@@ -13,6 +13,10 @@ align-items: center;
 position: relative;
 background: #51198C;
 padding: 8px;  
+
+@media (max-width: 800px){
+    padding: 3px;
+}
 `;
 
 const NavButtons = styled.div`
@@ -24,8 +28,11 @@ export const LogoIMG = styled.img`
 width: 65px;
 height: 100%;
 margin-left: 10px;
-`;
 
+@media (max-width: 800px){
+  
+}
+`;
 
 const H2dark = styled.h2`
 color: #51198C; 
@@ -34,6 +41,9 @@ background-color: #E7D7F7;
 padding: 10px;
 border-radius: 8px;
 
+@media (max-width: 800px){
+    padding: 3px;
+}
 `;
 
 const H2light = styled.h2`
@@ -41,6 +51,10 @@ color: #E7D7F7;
 padding: 10px;
 border-radius: 8px;
 text-decoration: none;
+
+@media (max-width: 800px){
+    padding: 3px;
+}
 `;
 
 export const Header = () => {

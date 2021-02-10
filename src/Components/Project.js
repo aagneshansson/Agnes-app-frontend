@@ -3,25 +3,19 @@ import { useHistory } from 'react-router-dom';
 //import Autocomplete from 'react-autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
 import { user } from '../reducers/user.js'
-import { ProjectInput, Heading, RegisterButton, Button, Label } from '../Styling/Globalstyling';
+import backbutton from '../Assets/backbutton.svg';
+import { ProjectInput, Heading, RegisterButton, Label, BackButton, ChildPageWrapper } from '../Styling/Globalstyling';
 import styled from 'styled-components'
 const ADDPROJECT_URL = 'http://localhost:8080/project';
 const GETUSERS_URL = 'http://localhost:8080/allusers';
 
-// 1) Add the "GET all users" fetch in this file and update the state from member -> setMember
-
-const AddProjectWrapper = styled.div`
-display: flex;
-flex-direction: column; 
-align-items: center;
-justify-content: center;
-`;
-
-const Form = styled.form`
+const AddProjectForm = styled.form`
 display: flex
 flex-direction: column; 
 align-items: center; 
 justify-content: center; 
+text-align: center;
+margin: 1rem;
 
     @media (min-width: 667px){
     }
@@ -37,7 +31,7 @@ export const Addproject = () => {
     
     const accessToken = useSelector((store) => store.user.login.accessToken);
 
-    //useEffect to fetch all members in a GET request from backend to get alluserlist)
+    // Fetch all members in a GET request from backend update the state with a full list of all user objects 
      useEffect(() => {
          fetch(GETUSERS_URL,
             {
@@ -86,18 +80,6 @@ export const Addproject = () => {
                     },
                     
                 })
-            // fetch(ADDPROJECT_URL, {
-            //     method: 'POST',
-            //     body: JSON.stringify({
-            //       projectname,
-            //       memberId: selectedMember[0].memberId,
-            //     }),
-            //     // Include the accessToken to get the protected endpoint
-            //     headers: {
-            //       Authorization: accessToken,
-            //       'Content-Type': 'application/json',
-            //     },
-            //   })
             .then((res) => {
                 if (!res.ok) {
                     throw new Error ('Unable to add project');
@@ -111,15 +93,14 @@ export const Addproject = () => {
             .catch((err) => {
                 dispatch(user.actions.setErrorMessage({ errorMessage: err }));
             })
-            // history.push('/profile')
     }
 }
 
     return (
-        <AddProjectWrapper>
-            <Form>
-                <Heading>Add project</Heading>
+        <ChildPageWrapper>
+            <AddProjectForm>
                 <Label>
+                <Heading>Add a project</Heading>
                     <ProjectInput
                     required
                     placeholder="Project name"
@@ -129,7 +110,6 @@ export const Addproject = () => {
                     />
                 </Label>
 
-                {/* <Heading>Add member to your project</Heading> */}
                 <Label>
                     <ProjectInput
                     type="text"
@@ -140,7 +120,13 @@ export const Addproject = () => {
                     {console.log(chosenUser)}
                 </Label>
                 <RegisterButton type="submit" onClick={handleAddproject}>Create project</RegisterButton>
-                {/* <Autocomplete 
+            </AddProjectForm>
+                <BackButton src={backbutton} onClick={handleGoBack} alt="Go back button"></BackButton>
+        </ChildPageWrapper>
+    )
+}
+
+    {/* <Autocomplete 
                 
                 getItemValue={(item) => item.label}
                 items={members.map(member => <p>{member.name}</p>)}
@@ -153,12 +139,3 @@ export const Addproject = () => {
                   value={members}
                   onChange={(e) => setMembers(e.target.value)}
                   /> */}
-
-            </Form>
-                <Button 
-                onClick={handleGoBack}>
-                    Back
-                </Button>
-        </AddProjectWrapper>
-    )
-}

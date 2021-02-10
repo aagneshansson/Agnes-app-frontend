@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { Mainwrapper, Heading, Button, P, H2 } from '../Styling/Globalstyling';
+import { Mainwrapper, Heading, Button, P } from '../Styling/Globalstyling';
 import { Signup } from './Signup.js';
 import { Profile } from './Profile.js'
 

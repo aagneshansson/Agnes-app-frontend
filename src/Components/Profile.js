@@ -1,6 +1,6 @@
 import React from 'react';
-import { Addproject } from './Project.js';
-import { Logout } from './Logout';
+// import { Addproject } from './Project.js';
+// import { Logout } from './Logout';
 import { Projectlist } from './Projectlist.js'
 import { MainProfile, Heading, H2 } from '../Styling/Globalstyling';
 import { Memberprojectlist } from './Memberprojectlist.js';
@@ -14,12 +14,23 @@ import { useHistory } from 'react-router-dom';
 const WelcomeColumn = styled.div`
 display: flex;
 flex-direction: column;
-width: 40%;
+justify-content: center;
+align-items: center;
+
+@media (max-width: 800px){
+text-align: center;
+}
 `;
 
 const ProjectColumn = styled.div`
 display: flex;
 flex-flow: row wrap;
+justify-content: center;
+align-items: center;
+
+@media (max-width: 800px){
+
+}
 `;
 
 const AddProjectButton = styled.button`

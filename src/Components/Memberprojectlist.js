@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Mainwrapper, Heading, Projectwrapper } from '../Styling/Globalstyling.js'
+import { ProjectList, Heading, ProjectCard } from '../Styling/Globalstyling.js'
+import { useHistory } from 'react-router-dom';
 
 export const Memberprojectlist = () => {
   const MEMBERLIST_URL = 'http://localhost:8080/member'
   const [projects, setProjects] = useState([])
+  const history = useHistory();
   const accessToken = useSelector((store) => store.user.login.accessToken)
+
+  const handleProjectClick = () => {
+    history.push("/projectpage")
+  }
 
   useEffect(() => {
     fetch(MEMBERLIST_URL,
@@ -21,21 +27,21 @@ export const Memberprojectlist = () => {
   }, [accessToken])
 
   return (
-    <>
+    <ProjectList>
       {projects && projects.map((project) => {
 
         return (
       
-          <Projectwrapper key={project._id}>
+          <ProjectCard key={project._id} onClick={handleProjectClick}>
             <Heading>
               {project.projectname}
               {console.log(project)}
               {project.userId.name}
             </Heading>
-          </Projectwrapper>
+          </ProjectCard>
         )
       })}
-    </>
+    </ProjectList>
   )
 }
 

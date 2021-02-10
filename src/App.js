@@ -16,7 +16,7 @@ import { Homepage } from 'Components/Homepage.js';
 import { Profile } from 'Components/Profile.js';
 import { Header } from 'Components/Header.js';
 import { Addproject } from 'Components/Project.js';
-import { Footer } from 'Components/Footer.js';
+import { EachProject } from 'Components/EachProject.js';
 import { Logout } from 'Components/Logout.js';
 
 const AppWrapper = styled.section`
@@ -89,6 +89,10 @@ export const App = () => {
       
             <Route path="/logout" exact>
               <Logout />
+            </Route>
+
+            <Route path="/projectpage" exact>
+              <EachProject />
             </Route>
 
             <Signup />
