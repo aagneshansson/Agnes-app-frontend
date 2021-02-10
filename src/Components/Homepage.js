@@ -31,6 +31,7 @@ padding: 1.5rem;
 
   @media (max-width: 800px){
     margin: 1rem;
+    visibility: hidden;
   }
 `;
 
@@ -56,10 +57,11 @@ export const Homepage = () => {
       </LeftColumn>
 
       <RightColumn>
+        
         <Lottie
           options={{ animationData }}
-          height={550}
           width={550}
+          height={550}
         />
       </RightColumn>
     </Mainwrapper>
