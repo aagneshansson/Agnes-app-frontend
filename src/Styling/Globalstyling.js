@@ -101,6 +101,7 @@ margin: 0 0 0 3rem;
 
 @media (max-width: 850px){
     margin: 0 0 0 0;
+    flex-wrap: wrap;
     justify-content: center; 
     align-items: center;
     width: 100%;
@@ -180,27 +181,30 @@ width: 20rem;
 height: 10rem;
 word-wrap: wrap;
 word-wrap: break-word;
+align-text: center;
 padding: 1rem;
 margin: 1rem;
 display: flex;
 flex-direction: column;
+justify-content: center;
+align-items: center; 
 pointer: cursor; 
 background: #51198C;
 box-shadow: 0 0 1px #AC6EED;
 
-&:hover{
-  box-shadow: 1px 2px 1px #AC6EED;
-  background: #D1B3F2;
-  transform: scale(1.1); 
-  transition: background 0.6s ease;
-  box-shadow: none;
+    &:hover{
+    box-shadow: 1px 2px 1px #AC6EED;
+    background: #D1B3F2;
+    transform: scale(1.1); 
+    transition: background 0.6s ease;
+    box-shadow: none;
+    }
 
-@media (max-width: 850px){
-    margin: 0rem;
-    padding: 0rem;
-    display: flex;
-    flex-direction: row;
-}
+    @media (max-width: 850px){
+    width: 30%;
+    height: 9rem;
+    padding: 0.5rem;
+    }
 `;
 
 export const BackButton = styled.img`

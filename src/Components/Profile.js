@@ -23,17 +23,27 @@ const OneColumn = styled.div`
 margin: 1rem;
 display: flex;
 justify-content: center; 
+
+
+@media (max-width: 800px){
+    flex-direction: column;
+    align-items: center; 
+}
 `;
 
 const ProjectColumn = styled.div`
 display: flex;
 flex-direction: column;
-// flex-flow: row wrap;
 justify-content: flex-start;
 align-items: center;
-width: 40%;
+width: 100%;
 
     @media (max-width: 800px){
+        flex-direction: row;
+        flex-flow: row wrap;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
     }
 `;
 
@@ -80,7 +90,7 @@ export const Profile = () => {
                 <ProjectColumn>
                     <Heading>
                         Personal projects
-                        </Heading>
+                    </Heading>
                     <Projectlist />
                 </ProjectColumn>
 
