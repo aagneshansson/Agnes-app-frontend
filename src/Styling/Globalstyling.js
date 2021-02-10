@@ -3,10 +3,13 @@ import styled from 'styled-components'
 export const Mainwrapper = styled.section`
 background: #51198C; 
 display: flex;
-flex-direction: column;
 align-items: center;
 justify-content: center;
 text-align: center;
+
+@media (max-width: 800px){
+    flex-direction: column;
+}
 `;
 
 // Profile wrapper 
@@ -25,6 +28,8 @@ justify-content: center;
 export const Label = styled.label`
 display: flex; 
 flex-direction: column;
+align-items: center;
+justify-content: center;
 `;
 
 export const Form = styled.form`
