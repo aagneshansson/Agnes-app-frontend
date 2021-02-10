@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { CardText, FileIMG, ProjectCard, ProjectList } from '../Styling/Globalstyling.js';
-import file from '../Assets/file.png';
 import { useHistory } from 'react-router-dom';
 
+import { CardText, FileIMG, ProjectCard, ProjectList } from '../Styling/Globalstyling.js';
+import file from '../Assets/file.png';
 // import moment from 'moment'; --> This makes the "createdat" looks much prettier
 
 export const Projectlist = () => {
-  const PROJECTLIST_URL = 'http://localhost:8080/projectlist'
-  const [projects, setProjects] = useState([])
+  const PROJECTLIST_URL = 'http://localhost:8080/projectlist';
+  const [projects, setProjects] = useState([]);
   const history = useHistory();
-  const accessToken = useSelector((store) => store.user.login.accessToken)
+  const accessToken = useSelector((store) => store.user.login.accessToken);
 
   const handleProjectClick = () => {
     history.push("/projectpage")
-  }
+  };
 
   useEffect(() => {
     fetch(PROJECTLIST_URL,
@@ -24,13 +24,13 @@ export const Projectlist = () => {
       })
       .then((res) => res.json())
       .then((data) => {
-          console.log(data)
-      setProjects(data)
+        console.log(data)
+        setProjects(data)
       })
   }, [accessToken])
 
   return (
-   <ProjectList>
+    <ProjectList>
       {projects && projects.map((project) => {
 
         return (
@@ -38,9 +38,9 @@ export const Projectlist = () => {
             <CardText>
               {project.projectname}
               {/* {project.createdAt} */}
-              
+
             </CardText>
-           
+
             <span>
               <FileIMG src={file} alt=""></FileIMG>
               <FileIMG src={file} alt=""></FileIMG>
@@ -49,5 +49,5 @@ export const Projectlist = () => {
         )
       })}
     </ProjectList>
-  )
-}
+  );
+};

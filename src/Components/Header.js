@@ -62,28 +62,28 @@ export const Header = () => {
 
     return (
         <Nav>
-            <LogoIMG src={logo} alt="OrganizeIt logo"></LogoIMG> 
+            <LogoIMG src={logo} alt="OrganizeIt logo"></LogoIMG>
 
             <NavButtons>
-            {accessToken && (
-                <>
-                    <Link to="/logout">
-                    <H2dark>Log out</H2dark>
-                    </Link>
-                </>
-            )} 
-            {!accessToken && (
-                <>
-            <Link to="/signin">
-                <H2light>Sign in</H2light>
-            </Link>
-            
-            <Link to="/signup">
-                <H2dark>Sign up</H2dark>
-            </Link>
-            </>
-              )}              
+                {accessToken && (
+                    <>
+                        <Link to="/logout">
+                            <H2dark>Log out</H2dark>
+                        </Link>
+                    </>
+                )}
+                {!accessToken && (
+                    <>
+                        <Link to="/signin">
+                            <H2light>Sign in</H2light>
+                        </Link>
+
+                        <Link to="/signup">
+                            <H2dark>Sign up</H2dark>
+                        </Link>
+                    </>
+                )}
             </NavButtons>
         </Nav>
-    )
-}
+    );
+};

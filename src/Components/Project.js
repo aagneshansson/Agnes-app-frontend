@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-//import Autocomplete from 'react-autocomplete';
 import { useDispatch, useSelector } from 'react-redux';
-import { user } from '../reducers/user.js'
+import styled from 'styled-components';
+// import Autocomplete from 'react-autocomplete';
+
+import { user } from '../reducers/user.js';
 import backbutton from '../Assets/backbutton.svg';
 import { ProjectInput, Heading, RegisterButton, Label, BackButton, ChildPageWrapper } from '../Styling/Globalstyling';
-import styled from 'styled-components'
+
 const ADDPROJECT_URL = 'http://localhost:8080/project';
 const GETUSERS_URL = 'http://localhost:8080/allusers';
 
@@ -17,7 +19,7 @@ justify-content: center;
 text-align: center;
 margin: 1rem;
 
-    @media (min-width: 667px){
+    @media (min-width: 667px) {
     }
 `;
 
@@ -48,7 +50,6 @@ export const Addproject = () => {
                 })
             setMembers(members)
             console.log(members)
-
             })
      }, [accessToken])
 
@@ -61,7 +62,6 @@ export const Addproject = () => {
         const selectedMember = members.filter(
             (member) => member.name === chosenUser
           );
-
 
           if (chosenUser === undefined) {
             fetch(ADDPROJECT_URL, { method: 'POST', body: JSON.stringify({ projectname }), headers: { Authorization: accessToken, 'Content-Type': 'application/json',},
@@ -89,7 +89,6 @@ export const Addproject = () => {
             .then((json) => {
                 dispatch(user.actions.setNewProject({ projectname: json.projectname }));
             })
-
             .catch((err) => {
                 dispatch(user.actions.setErrorMessage({ errorMessage: err }));
             })
@@ -126,7 +125,7 @@ export const Addproject = () => {
     )
 }
 
-    {/* <Autocomplete 
+    /* <Autocomplete 
                 
                 getItemValue={(item) => item.label}
                 items={members.map(member => <p>{member.name}</p>)}
@@ -138,4 +137,4 @@ export const Addproject = () => {
                   }
                   value={members}
                   onChange={(e) => setMembers(e.target.value)}
-                  /> */}
+                  /> */

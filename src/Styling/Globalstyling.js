@@ -1,8 +1,21 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Mainwrapper = styled.section`
 background: #51198C; 
 display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+
+@media (max-width: 800px){
+    flex-direction: column;
+}
+`;
+
+export const SignoutWrapper = styled.section`
+background: #51198C; 
+display: flex;
+flex-direction: column;
 align-items: center;
 justify-content: center;
 text-align: center;
@@ -45,13 +58,29 @@ justify-content: center;
 
 export const Heading = styled.h1`
 color: #AC6EED;
+font-size: 32px;
 
-@media (max-width: 800px){
+@media (max-width: 812px){
+    font-size: 28px;
+}
+`;
+
+export const LightHeading = styled.h1`
+color: #E7D7F7;
+font-size: 38px;
+
+@media (max-width: 812px){
+    font-size: 28px;
 }
 `;
 
 export const H2 = styled.h2`
 color: #AC6EED;
+`;
+
+export const Italic = styled.p`
+color: #E7D7F7;
+font-style: italic;
 `;
 
 export const P = styled.p`
@@ -104,13 +133,13 @@ margin: 1rem;
 width: 100%;
 font-size: 1rem;
 border-radius: 4px;
+cursor: pointer;
 
 &:hover {
 
 }
     @media (min-width: 667px){
-    
-    }
+}
 `;
 
 export const Button = styled.button`
@@ -147,12 +176,6 @@ box-shadow: 0 2px 2px #e2e4e6;
 
 export const FileIMG = styled.img`
 max-width: 15px;`;
-
-// export const LogoIMG = styled.img`
-// width: 65px;
-// margin-left: 10px;
-// align-self: flex-start; 
-// `;
 
 export const ProjectCard = styled.div`
 border: 1px solid lightgrey;

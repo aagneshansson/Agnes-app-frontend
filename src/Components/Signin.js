@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { signinfetch } from '../reducers/fetch';
-import { Mainwrapper, Button, Heading, Form, Label, Input } from '../Styling/Globalstyling';
+import { Mainwrapper, RegisterButton, LightHeading, Form, Label, Input } from '../Styling/Globalstyling';
 import { useHistory } from "react-router-dom";
 
 export const Signin = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [name, setName] = useState("")
-    const [password, setPassword] = useState("")
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
     const accessToken = useSelector((store) => store.user.login.accessToken);
+    // const error = useSelector((store) => store.user.statusMessage);
 
     // Sign in user 
     const handleSignin = (event) => {
@@ -17,41 +19,40 @@ export const Signin = () => {
         dispatch(signinfetch(name, password))
 
         if (accessToken) {
-        history.push("/profile");
+            history.push("/profile");
         }
     };
 
     return (
-            <Mainwrapper>
+        <Mainwrapper>
             <Form>
-            <Heading>Sign in</Heading>
-            <Label>
-                <Input
-                required
-                placeholder="Name"
-                type="text"
-                value={name}
-                onChange={event => setName(event.target.value)} 
-                
-                />
-            </Label>
+                <LightHeading>Sign in</LightHeading>
+                <Label>
+                    <Input
+                        required
+                        placeholder="Username *"
+                        type="text"
+                        value={name}
+                        onChange={event => setName(event.target.value)}
+                    />
+                </Label>
 
-            <Label>
-                <Input
-                required
-                minLength="5"
-                type="password"
-                value={password}
-                onChange={event => setPassword(event.target.value)} 
-                />
-            </Label>
-            <Button type="submit" onClick={handleSignin}>Sign in!</Button>
+                <Label>
+                    <Input
+                        required
+                        placeholder="Password *"
+                        minLength="5"
+                        type="password"
+                        value={password}
+                        onChange={event => setPassword(event.target.value)}
+                    />
+                </Label>
+                <RegisterButton
+                    type="submit"
+                    onClick={handleSignin}>
+                    Sign in!
+                </RegisterButton>
             </Form>
-            </Mainwrapper>
+        </Mainwrapper>
     );
-// } else {
-//     return <Profile />
-    
-// }
-
-}
+};

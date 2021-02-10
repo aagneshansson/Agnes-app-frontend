@@ -1,9 +1,10 @@
 import React from 'react';
-import { Projectlist } from './Projectlist.js'
-import { MainProfile, Heading, H2 } from '../Styling/Globalstyling';
-import { Memberprojectlist } from './Memberprojectlist.js';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+
+import { Projectlist } from './Projectlist.js';
+import { Memberprojectlist } from './Memberprojectlist.js';
+import { MainProfile, Heading, H2 } from '../Styling/Globalstyling';
 
 const WelcomeColumn = styled.div`
 display: flex;
@@ -12,9 +13,9 @@ justify-content: center;
 align-items: center;
 margin: 1rem;
 
-@media (max-width: 800px){
-text-align: center;
-}
+    @media (max-width: 800px){
+    text-align: center;
+    }
 `;
 
 const ProjectColumn = styled.div`
@@ -23,9 +24,8 @@ flex-flow: row wrap;
 justify-content: center;
 align-items: center;
 
-@media (max-width: 800px){
-
-}
+    @media (max-width: 800px){
+    }
 `;
 
 const AddProjectButton = styled.button`
@@ -40,9 +40,7 @@ padding: 1rem;
 width: 75%;
 font-weight: bolder;
 font-size: 1.6rem;
-
 box-shadow: 0 2px 2px #e2e4e6;
-
 
 &:hover {
   background: #D1B3F2;
@@ -57,13 +55,14 @@ export const Profile = () => {
 
     const Addprojects = () => {
         history.push('/project')
-    }
+    };
+
     return (
         <MainProfile>
             <WelcomeColumn>
                 <H2>Welcome to your site, let's create some projects!</H2>
-            <AddProjectButton 
-                onClick={Addprojects}>Start to create a project
+                <AddProjectButton
+                    onClick={Addprojects}>Create a new project
                 </AddProjectButton>
             </WelcomeColumn>
 
@@ -72,14 +71,11 @@ export const Profile = () => {
                 <Projectlist />
             </ProjectColumn>
 
-            <Heading>Collaborations</Heading>
+            <Heading>Collaborative projects</Heading>
 
             <ProjectColumn>
-            <Memberprojectlist />
+                <Memberprojectlist />
             </ProjectColumn>
-
-            
-            {/* </ProfileWrapper> */}
         </MainProfile>
-    )
-}
+    );
+};

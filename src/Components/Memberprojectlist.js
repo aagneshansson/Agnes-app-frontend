@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { ProjectList, Heading, ProjectCard } from '../Styling/Globalstyling.js'
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import { ProjectList, Heading, ProjectCard } from '../Styling/Globalstyling.js';
+
 export const Memberprojectlist = () => {
-  const MEMBERLIST_URL = 'http://localhost:8080/member'
-  const [projects, setProjects] = useState([])
+  const MEMBERLIST_URL = 'http://localhost:8080/member';
+  const [projects, setProjects] = useState([]);
   const history = useHistory();
-  const accessToken = useSelector((store) => store.user.login.accessToken)
+  const accessToken = useSelector((store) => store.user.login.accessToken);
 
   const handleProjectClick = () => {
     history.push("/projectpage")
-  }
+  };
 
   useEffect(() => {
     fetch(MEMBERLIST_URL,
@@ -21,8 +22,7 @@ export const Memberprojectlist = () => {
       })
       .then((res) => res.json())
       .then((data) => {
-
-      setProjects(data)
+        setProjects(data)
       })
   }, [accessToken])
 
@@ -31,7 +31,6 @@ export const Memberprojectlist = () => {
       {projects && projects.map((project) => {
 
         return (
-      
           <ProjectCard key={project._id} onClick={handleProjectClick}>
             <Heading>
               {project.projectname}
@@ -42,7 +41,7 @@ export const Memberprojectlist = () => {
         )
       })}
     </ProjectList>
-  )
-}
+  );
+};
 
 

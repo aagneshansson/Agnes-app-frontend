@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Nav = styled.nav`
@@ -16,19 +16,18 @@ color: #51198C
 `;
 
 export const Footer = () => {
-    // const [open, setOpen] = useState(false);
 
     return (
         <>
-        <Nav>
-            <Link to="/contact">
-                <H2>Contact</H2>
-            </Link>
+            <Nav>
+                <Link to="/contact">
+                    <H2>Contact</H2>
+                </Link>
 
-            <Link to="/about">
-                <H2>About</H2>
-            </Link>
-        </Nav>
+                <Link to="/about">
+                    <H2>About</H2>
+                </Link>
+            </Nav>
         </>
-    )
-}
+    );
+};
