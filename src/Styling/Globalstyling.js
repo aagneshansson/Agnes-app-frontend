@@ -114,7 +114,7 @@ padding: 1rem;
 margin: 1rem;
 width: 80%;
 font-size: 1rem;
-border-radius: 4px;
+border-radius: 8px;
 cursor: pointer;
 
 &:hover {
@@ -132,7 +132,7 @@ padding: 1rem;
 margin: 1rem;
 width: 100%;
 font-size: 1rem;
-border-radius: 4px;
+border-radius: 8px;
 cursor: pointer;
 
 &:hover {
@@ -140,11 +140,6 @@ cursor: pointer;
 }
     @media (min-width: 667px){
 }
-`;
-
-export const Button = styled.button`
-border-radius: 12px;
-cursor: pointer;
 `;
 
 export const RegisterButton = styled.button`
@@ -175,13 +170,14 @@ box-shadow: 0 2px 2px #e2e4e6;
 `;
 
 export const FileIMG = styled.img`
-max-width: 15px;`;
+max-width: 15px;
+`;
 
 export const ProjectCard = styled.div`
 border: 1px solid lightgrey;
-border-radius: 6px;
-width: 10rem;
-height: 10rem
+border-radius: 8px;
+width: 20rem;
+height: 10rem;
 word-wrap: wrap;
 word-wrap: break-word;
 padding: 1rem;

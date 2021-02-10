@@ -12,17 +12,26 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 margin: 1rem;
+padding: 1rem;
 
     @media (max-width: 800px){
     text-align: center;
     }
 `;
 
+const OneColumn = styled.div`
+margin: 1rem;
+display: flex;
+justify-content: center; 
+`;
+
 const ProjectColumn = styled.div`
 display: flex;
-flex-flow: row wrap;
-justify-content: center;
+flex-direction: column;
+// flex-flow: row wrap;
+justify-content: flex-start;
 align-items: center;
+width: 40%;
 
     @media (max-width: 800px){
     }
@@ -66,16 +75,23 @@ export const Profile = () => {
                 </AddProjectButton>
             </WelcomeColumn>
 
-            <Heading>Personal projects</Heading>
-            <ProjectColumn>
-                <Projectlist />
-            </ProjectColumn>
+            <OneColumn>
+                {/* Column left */}
+                <ProjectColumn>
+                    <Heading>
+                        Personal projects
+                        </Heading>
+                    <Projectlist />
+                </ProjectColumn>
 
-            <Heading>Collaborative projects</Heading>
-
-            <ProjectColumn>
-                <Memberprojectlist />
-            </ProjectColumn>
+                {/* Column right */}
+                <ProjectColumn>
+                    <Heading>
+                        Collaborative projects
+                    </Heading>
+                    <Memberprojectlist />
+                </ProjectColumn>
+            </OneColumn>
         </MainProfile>
     );
 };
