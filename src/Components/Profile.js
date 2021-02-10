@@ -37,13 +37,13 @@ flex-direction: column;
 justify-content: flex-start;
 align-items: center;
 width: 100%;
+text-align: center;
 
-    @media (max-width: 800px){
+    @media (max-width: 800px) {
         flex-direction: row;
         flex-flow: row wrap;
         width: 100%;
         justify-content: center;
-        text-align: center;
     }
 `;
 

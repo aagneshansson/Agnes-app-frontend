@@ -95,11 +95,9 @@ font-weight: bold;
 export const ProjectList = styled.div`
 display: flex;
 flex-wrap: wrap;
-justify-content: flex-start;
-margin: 0 0 0 3rem;
+justify-content: center;
 
-
-@media (max-width: 850px){
+@media (max-width: 850px) {
     margin: 0 0 0 0;
     flex-wrap: wrap;
     justify-content: center; 
@@ -177,7 +175,7 @@ max-width: 15px;
 export const ProjectCard = styled.div`
 border: 1px solid lightgrey;
 border-radius: 8px;
-width: 20rem;
+width: 15rem;
 height: 10rem;
 word-wrap: wrap;
 word-wrap: break-word;
