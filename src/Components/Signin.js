@@ -24,7 +24,7 @@ export const Signin = () => {
     };
 
     const handleGoBack = () => {
-        history.push('/profile')
+        history.push('/')
     };
 
     return (
