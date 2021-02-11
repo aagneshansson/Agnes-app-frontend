@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { signinfetch } from '../reducers/fetch';
-import { Mainwrapper, RegisterButton, BackButton, LightHeading, Form, Label, Input } from '../Styling/Globalstyling';
+import { SigninWrapper, RegisterButton, BackButton, LightHeading, Form, Label, Input } from '../Styling/Globalstyling';
 import backbutton from '../Assets/backbutton.svg';
 import { useHistory } from "react-router-dom";
 
@@ -28,7 +28,7 @@ export const Signin = () => {
     };
 
     return (
-        <Mainwrapper>
+        <SigninWrapper>
             <Form>
                 <LightHeading>Sign in</LightHeading>
                 <Label>
@@ -62,6 +62,6 @@ export const Signin = () => {
                 onClick={handleGoBack}
                 alt="Go back button"
             />
-        </Mainwrapper>
+        </SigninWrapper>
     );
 };

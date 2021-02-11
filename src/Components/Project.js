@@ -56,7 +56,7 @@ export const Addproject = () => {
     const handleGoBack = () => {
         history.push('/profile')
     }
-    const handleAddproject = (event) => {
+    const handleAddproject = () => {
         history.push('/profile')
 
         const selectedMember = members.filter(

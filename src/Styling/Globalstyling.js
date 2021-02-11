@@ -12,6 +12,19 @@ text-align: center;
 }
 `;
 
+export const SigninWrapper = styled.section`
+background: #51198C; 
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+
+@media (max-width: 800px){
+    flex-direction: column;
+}
+`;
+
 export const SignoutWrapper = styled.section`
 background: #51198C; 
 display: flex;
@@ -175,6 +188,22 @@ max-width: 15px;
 export const DustbinIMG = styled.img`
 cursor: pointer;
 max-width: 25px;
+padding: 3px;
+
+&:hover {
+    background: #D1B3F2;
+    transform: scale(1.1); 
+    transition: background 0.6s ease;
+  }
+@media (max-width: 850) {
+    max-width: 15px;
+}
+`;
+
+export const MoreinfoIMG = styled.img`
+cursor: pointer;
+max-width: 25px;
+padding: 3px;
 
 &:hover {
     background: #D1B3F2;
@@ -189,7 +218,6 @@ max-width: 25px;
 export const Span = styled.span`
 align-self: center;
 justify-self: flex-end;
-margin: 3px;
 `;
 
 export const ProjectCard = styled.div`

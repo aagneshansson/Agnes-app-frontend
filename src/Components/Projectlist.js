@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { CardText, DustbinIMG, ProjectCard, ProjectList, Span, Italic } from '../Styling/Globalstyling.js';
+import { CardText, DustbinIMG, MoreinfoIMG, ProjectCard, ProjectList, Span, Italic } from '../Styling/Globalstyling.js';
 import dustbin from '../Assets/dustbin.svg';
+import layers from '../Assets/layers.svg';
 
 import moment from 'moment';
 
 export const Projectlist = () => {
   const PROJECTLIST_URL = 'https://organizeit-app.herokuapp.com/projectlist';
-  // const REMOVEPROJECT_URL = 'https://organizeit-app.herokuapp.com/delete/{project._id}';
+  // const REMOVEPROJECT_URL = `https://organizeit-app.herokuapp.com/delete/${project._id}`;
   const [projects, setProjects] = useState([]);
-  // const [removeproject, setRemoveproject] = useState([]);
   const history = useHistory();
   const accessToken = useSelector((store) => store.user.login.accessToken);
 
@@ -30,65 +30,55 @@ export const Projectlist = () => {
         console.log(data)
         setProjects(data)
       })
+    fetchProjects();
   }, [accessToken])
 
-        // NEXT STEP IS TO DELETE A PROJECT :D
-//     const handleRemoveProject = () => {
+  const fetchProjects = () => {
+    fetch(PROJECTLIST_URL,
+      {
+        method: "GET",
+        headers: { Authorization: accessToken, "Content-Type": "application/json" }
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        setProjects(data)
+      })
+  }
+ 
+  const handleRemoveProject = (_id) => {
 
-//     fetch(REMOVEPROJECT_URL, {
-//       method: 'DELETE',
-//       body: JSON.stringify({
+    fetch(`https://organizeit-app.herokuapp.com/delete/${_id}`,
+      {
+        method: 'DELETE',
+      })
+      .then((res) =>
+        res.json()
+      .then((json) => {
+          console.log('Project deleted successfully')
+          return json;
+        })
+        .finally(() => fetchProjects())
+      )
+  }
+
   
-//       }),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     })
-//     .then((res) => {
-//       if (res.ok) {
-//         return res.json();
-//       }
-//       throw new Error("Could not delete project");
-//     })
-//     .then((data) => {
-//       console.log(data)
-//       setProjects(data)
-//     })
-// };
-
   return (
     <ProjectList>
-      {/* <select>
-      
-      TRY TO DELETE A PROJECT
-        {projects && projects.map((project) => {
-        return(
-          <>
-              <option 
-              key={project._id}
-              value={removeproject}
-              onChange={event => setRemoveproject(event.target.value)}
-              >{project.projectname}</option>   
-              {console.log(removeproject)}
-          </>
-        )
-      })}
-      </select>
-      <button type="submit" onClick={handleRemoveProject}>Remove project</button> */}
-
       {projects && projects.map((project) => {
-  
+
         return (
-          <ProjectCard key={project._id} onClick={handleProjectClick}>
+          <ProjectCard key={project._id}>
             <CardText>
               {project.projectname}
             </CardText>
             <Italic>
-               {moment(project.createdAt).fromNow()}
+              {moment(project.createdAt).fromNow()}
             </Italic>
 
             <Span>
-              <DustbinIMG src={dustbin} alt=""/>
+              <DustbinIMG onClick={() => handleRemoveProject(project._id)} src={dustbin} alt="Dustbin button to remove a project" />
+              <MoreinfoIMG onClick={handleProjectClick} src={layers} alt="Image that takes the user to the specifik projectpage" />
             </Span>
           </ProjectCard>
         )
@@ -229,7 +219,7 @@ export const Projectlist = () => {
 //     fetch(REMOVEPROJECT_URL, {
 //       method: 'DELETE',
 //       body: JSON.stringify({
-  
+
 //       }),
 //       headers: {
 //         'Content-Type': 'application/json',

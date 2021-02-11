@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { ProjectList, CardText, ProjectCard, Span, Italic, DustbinIMG } from '../Styling/Globalstyling.js';
+import { ProjectList, CardText, ProjectCard, Span, Italic, DustbinIMG, MoreinfoIMG } from '../Styling/Globalstyling.js';
 import dustbin from '../Assets/dustbin.svg';
+import layers from '../Assets/layers.svg';
 
 import moment from 'moment';
 
@@ -67,7 +68,8 @@ export const Memberprojectlist = () => {
             </Italic>
 
             <Span>
-              <DustbinIMG src={dustbin} alt="" />
+              <DustbinIMG src={dustbin} alt="Dustbin button to remove a project" />
+              <MoreinfoIMG onClick={handleProjectClick} src={layers} alt="Image that takes the user to the specifik projectpage" />
             </Span>
           </ProjectCard>
         )
