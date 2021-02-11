@@ -64,7 +64,15 @@ export const Addproject = () => {
           );
 
           if (chosenUser === undefined) {
-            fetch(ADDPROJECT_URL, { method: 'POST', body: JSON.stringify({ projectname }), headers: { Authorization: accessToken, 'Content-Type': 'application/json',},
+            fetch(ADDPROJECT_URL, 
+                { method: 'POST', 
+                body: JSON.stringify({ 
+                    projectname 
+                }), 
+                headers: { 
+                    Authorization: accessToken, 
+                    'Content-Type': 'application/json',
+                },
               
                   })} else {
                     fetch(ADDPROJECT_URL, {

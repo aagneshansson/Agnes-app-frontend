@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { ProjectList, CardText, ProjectCard, Span, DustbinIMG } from '../Styling/Globalstyling.js';
+import { ProjectList, CardText, ProjectCard, Span, Italic, DustbinIMG } from '../Styling/Globalstyling.js';
 import dustbin from '../Assets/dustbin.svg';
+
+import moment from 'moment';
 
 export const Memberprojectlist = () => {
   const MEMBERLIST_URL = 'https://organizeit-app.herokuapp.com/member';
@@ -37,7 +39,10 @@ export const Memberprojectlist = () => {
               {project.projectname}
               {console.log(project)}
             </CardText>
-
+            <Italic>
+                {moment(project.createdAt).fromNow()}
+            </Italic>
+  
             <Span>
               <DustbinIMG src={dustbin} alt=""/>
             </Span>
