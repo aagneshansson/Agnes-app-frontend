@@ -30,13 +30,15 @@ export const Memberprojectlist = () => {
   return (
     <ProjectList>
       {projects && projects.map((project) => {
-
+      
         return (
           <ProjectCard key={project._id} onClick={handleProjectClick}>
             <CardText>
               {project.projectname}
               {console.log(project)}
-              {project.userId.name}
+  
+              {project.userId}
+              {console.log(project.userId)}
             </CardText>
 
             <span>

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { signinfetch } from '../reducers/fetch';
-import { Mainwrapper, RegisterButton, LightHeading, Form, Label, Input } from '../Styling/Globalstyling';
+import { Mainwrapper, RegisterButton, BackButton, LightHeading, Form, Label, Input } from '../Styling/Globalstyling';
+import backbutton from '../Assets/backbutton.svg';
 import { useHistory } from "react-router-dom";
 
 export const Signin = () => {
@@ -11,7 +12,6 @@ export const Signin = () => {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const accessToken = useSelector((store) => store.user.login.accessToken);
-    // const error = useSelector((store) => store.user.statusMessage);
 
     // Sign in user 
     const handleSignin = (event) => {
@@ -21,6 +21,10 @@ export const Signin = () => {
         if (accessToken) {
             history.push("/profile");
         }
+    };
+
+    const handleGoBack = () => {
+        history.push('/profile')
     };
 
     return (
@@ -53,6 +57,11 @@ export const Signin = () => {
                     Sign in!
                 </RegisterButton>
             </Form>
+            <BackButton
+                src={backbutton}
+                onClick={handleGoBack}
+                alt="Go back button"
+            />
         </Mainwrapper>
     );
 };
