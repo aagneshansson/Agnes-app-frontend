@@ -173,6 +173,7 @@ max-width: 15px;
 `;
 
 export const DustbinIMG = styled.img`
+cursor: pointer;
 max-width: 25px;
 
 &:hover {

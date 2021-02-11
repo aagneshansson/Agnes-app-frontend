@@ -1,6 +1,6 @@
 import { user } from './user.js'
 
-const SIGNUP_URL = 'https://organizeit-app.herokuapp.com/users';
+const SIGNUP_URL = 'http://organizeit-app.herokuapp.com/users';
 const SIGNIN_URL = 'https://organizeit-app.herokuapp.com/sessions';
 const LOGOUT_URL = 'https://organizeit-app.herokuapp.com/logout';
 
