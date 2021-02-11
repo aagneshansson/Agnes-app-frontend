@@ -172,6 +172,25 @@ export const FileIMG = styled.img`
 max-width: 15px;
 `;
 
+export const DustbinIMG = styled.img`
+max-width: 25px;
+
+&:hover {
+    background: #D1B3F2;
+    transform: scale(1.1); 
+    transition: background 0.6s ease;
+  }
+@media (max-width: 850) {
+    max-width: 15px;
+}
+`;
+
+export const Span = styled.span`
+align-self: center;
+justify-self: flex-end;
+margin: 3px;
+`;
+
 export const ProjectCard = styled.div`
 border: 1px solid lightgrey;
 border-radius: 8px;

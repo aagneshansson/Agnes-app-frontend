@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { ProjectList, CardText, ProjectCard, FileIMG } from '../Styling/Globalstyling.js';
-import file from '../Assets/file.png';
+import { ProjectList, CardText, ProjectCard, Span, DustbinIMG } from '../Styling/Globalstyling.js';
+import dustbin from '../Assets/dustbin.svg';
 
 export const Memberprojectlist = () => {
   const MEMBERLIST_URL = 'https://organizeit-app.herokuapp.com/member';
@@ -36,15 +36,11 @@ export const Memberprojectlist = () => {
             <CardText>
               {project.projectname}
               {console.log(project)}
-  
-              {project.userId}
-              {console.log(project.userId)}
             </CardText>
 
-            <span>
-              <FileIMG src={file} alt=""></FileIMG>
-              <FileIMG src={file} alt=""></FileIMG>
-            </span>
+            <Span>
+              <DustbinIMG src={dustbin} alt=""/>
+            </Span>
           </ProjectCard>
         )
       })}

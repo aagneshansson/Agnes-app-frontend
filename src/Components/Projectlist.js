@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { CardText, FileIMG, ProjectCard, ProjectList } from '../Styling/Globalstyling.js';
-import file from '../Assets/file.png';
+import { CardText, DustbinIMG, ProjectCard, ProjectList, Span } from '../Styling/Globalstyling.js';
+import dustbin from '../Assets/dustbin.svg';
+
 // import moment from 'moment'; --> This makes the "createdat" looks much prettier
 
 export const Projectlist = () => {
@@ -41,10 +43,9 @@ export const Projectlist = () => {
 
             </CardText>
 
-            <span>
-              <FileIMG src={file} alt=""></FileIMG>
-              <FileIMG src={file} alt=""></FileIMG>
-            </span>
+            <Span>
+              <DustbinIMG src={dustbin} alt=""/>
+            </Span>
           </ProjectCard>
         )
       })}
