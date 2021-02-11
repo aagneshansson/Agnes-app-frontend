@@ -1,8 +1,8 @@
 import { user } from './user.js'
 
-const SIGNUP_URL = 'http://localhost:8080/users';
-const SIGNIN_URL = 'http://localhost:8080/sessions';
-const LOGOUT_URL = 'http://localhost:8080/logout';
+const SIGNUP_URL = 'https://organizeit-app.herokuapp.com/users';
+const SIGNIN_URL = 'https://organizeit-app.herokuapp.com/sessions';
+const LOGOUT_URL = 'https://organizeit-app.herokuapp.com/logout';
 
 export const signupfetch = ( name, password ) => { 
 

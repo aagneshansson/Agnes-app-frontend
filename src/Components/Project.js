@@ -8,8 +8,8 @@ import { user } from '../reducers/user.js';
 import backbutton from '../Assets/backbutton.svg';
 import { ProjectInput, Heading, RegisterButton, Label, BackButton, ChildPageWrapper } from '../Styling/Globalstyling';
 
-const ADDPROJECT_URL = 'http://localhost:8080/project';
-const GETUSERS_URL = 'http://localhost:8080/allusers';
+const ADDPROJECT_URL = 'https://organizeit-app.herokuapp.com/project';
+const GETUSERS_URL = 'https://organizeit-app.herokuapp.com/allusers';
 
 const AddProjectForm = styled.form`
 display: flex

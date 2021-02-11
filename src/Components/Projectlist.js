@@ -7,7 +7,7 @@ import file from '../Assets/file.png';
 // import moment from 'moment'; --> This makes the "createdat" looks much prettier
 
 export const Projectlist = () => {
-  const PROJECTLIST_URL = 'http://localhost:8080/projectlist';
+  const PROJECTLIST_URL = 'https://organizeit-app.herokuapp.com/projectlist';
   const [projects, setProjects] = useState([]);
   const history = useHistory();
   const accessToken = useSelector((store) => store.user.login.accessToken);

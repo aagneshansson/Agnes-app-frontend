@@ -6,7 +6,7 @@ import { ProjectList, CardText, ProjectCard, FileIMG } from '../Styling/Globalst
 import file from '../Assets/file.png';
 
 export const Memberprojectlist = () => {
-  const MEMBERLIST_URL = 'http://localhost:8080/member';
+  const MEMBERLIST_URL = 'https://organizeit-app.herokuapp.com/member';
   const [projects, setProjects] = useState([]);
   const history = useHistory();
   const accessToken = useSelector((store) => store.user.login.accessToken);
