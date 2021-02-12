@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { signupfetch } from '../reducers/fetch';
 import { Mainwrapper, LightHeading, Form, Label, Input, RegisterButton } from '../Styling/Globalstyling';
-import { StatusMessage } from './Statusmessage';
 
 export const Signup = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-    const error = useSelector((store) => store.user.statusMessage);
+    // const error = useSelector((store) => store.user.statusMessage);
 
     //Sign up a user 
     const handleSignup = (event) => {
@@ -42,8 +41,6 @@ export const Signup = () => {
                         onChange={event => setPassword(event.target.value)}
                     />
                 </Label>
-                {error && <h4>{`${error}`}</h4>}
-                <StatusMessage />
                 <RegisterButton type="submit" onClick={handleSignup}>Start here</RegisterButton>
             </Form>
         </Mainwrapper>
