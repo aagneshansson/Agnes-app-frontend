@@ -67,7 +67,7 @@ export const Header = () => {
             <NavButtons>
                 {accessToken && (
                     <>
-                        <Link to="/logout">
+                        <Link to="/logout" style={{ textDecoration: 'none' }}>
                             <H2dark>Log out</H2dark>
                         </Link>
                     </>
@@ -78,7 +78,7 @@ export const Header = () => {
                             <H2light>Sign in</H2light>
                         </Link>
 
-                        <Link to="/signup">
+                        <Link to="/signup" style={{ textDecoration: 'none' }}>
                             <H2dark>Sign up</H2dark>
                         </Link>
                     </>

@@ -82,18 +82,34 @@ export const LightHeading = styled.h1`
 color: #E7D7F7;
 font-size: 38px;
 
+&:link { 
+    color: #E7D7F7;
+}
+&:active {
+    color: #E7D7F7;
+}
+
 @media (max-width: 812px){
-    font-size: 28px;
+font-size: 28px;
+
 }
 `;
 
 export const H2 = styled.h2`
 color: #AC6EED;
+
+&:link { 
+    text-decoration: none;
+}
+&:active {
+    text-decoration: none;
+}
 `;
 
 export const Italic = styled.p`
 color: #E7D7F7;
 font-style: italic;
+font-size: 14px;
 `;
 
 export const P = styled.p`
@@ -109,6 +125,7 @@ export const ProjectList = styled.div`
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
+width: 100%;
 
 @media (max-width: 850px) {
     margin: 0 0 0 0;
@@ -148,9 +165,31 @@ border-radius: 8px;
 cursor: pointer;
 
 &:hover {
-
 }
     @media (min-width: 667px){
+}
+`;
+
+export const SigninButton = styled.button`
+border-radius: 8px;
+background: #E7D7F7;;
+color: #51198C;
+cursor: pointer;
+outline: none;
+border: none;
+padding: 1rem;
+font-weight: bolder;
+font-size: 1.6rem;
+box-shadow: 0 2px 2px #e2e4e6;
+
+&:hover {
+  background: #D1B3F2;
+  transform: scale(1.1); 
+  transition: background 0.6s ease;
+  box-shadow: none;
+}
+
+@media (min-width: 667px){
 }
 `;
 
@@ -223,7 +262,8 @@ justify-self: flex-end;
 export const ProjectCard = styled.div`
 border: 1px solid lightgrey;
 border-radius: 8px;
-width: 15rem;
+// width: 15rem;
+width: 100%;
 height: 10rem;
 word-wrap: wrap;
 word-wrap: break-word;
@@ -247,8 +287,8 @@ box-shadow: 0 0 1px #AC6EED;
     }
 
     @media (max-width: 850px){
-    width: 30%;
-    height: 9rem;
+    width: 100%;
+    height: 100%;
     padding: 0.5rem;
     }
 `;

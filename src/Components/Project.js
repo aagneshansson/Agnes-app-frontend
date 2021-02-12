@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-// import Autocomplete from 'react-autocomplete';
 
 import { user } from '../reducers/user.js';
 import backbutton from '../Assets/backbutton.svg';
@@ -134,7 +133,13 @@ export const Addproject = () => {
 }
 
     /* <Autocomplete 
-                
+                import Autocomplete from 'react-autocomplete';
+         <Autocomplete
+                        value={members}
+                        getItemValue={(chosenUser) => setChosenUser}
+                        items={members.map(member => <p>{member.name}</p>)}
+               
+                  />
                 getItemValue={(item) => item.label}
                 items={members.map(member => <p>{member.name}</p>)}
 

@@ -29,7 +29,7 @@ export const Projectlist = () => {
         console.log(data)
         setProjects(data)
       })
-    fetchProjects();
+      fetchProjects();
   }, [accessToken])
 
   const fetchProjects = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Mainwrapper, Heading, RegisterButton } from '../Styling/Globalstyling';
+import { Mainwrapper, Heading, SigninButton } from '../Styling/Globalstyling';
 import { Signup } from './Signup.js';
 import { Profile } from './Profile.js';
 
@@ -52,7 +52,7 @@ export const Homepage = () => {
         <Signup />
         <Heading>Already a user?</Heading>
         <Link to="/signin">
-          <RegisterButton>Sign in</RegisterButton>
+          <SigninButton>Sign in</SigninButton>
         </Link>
       </LeftColumn>
 
