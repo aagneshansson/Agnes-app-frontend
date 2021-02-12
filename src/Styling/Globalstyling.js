@@ -262,14 +262,13 @@ justify-self: flex-end;
 export const ProjectCard = styled.div`
 border: 1px solid lightgrey;
 border-radius: 8px;
-// width: 15rem;
 width: 100%;
 height: 10rem;
 word-wrap: wrap;
 word-wrap: break-word;
 align-text: center;
 padding: 1rem;
-margin: 1rem;
+margin: 1.5rem;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -278,7 +277,7 @@ pointer: cursor;
 background: #51198C;
 box-shadow: 0 0 1px #AC6EED;
 
-    &:hover{
+    &:hover {
     box-shadow: 1px 2px 1px #AC6EED;
     background: #D1B3F2;
     transform: scale(1.1); 
@@ -290,6 +289,7 @@ box-shadow: 0 0 1px #AC6EED;
     width: 100%;
     height: 100%;
     padding: 0.5rem;
+    margin: 1rem;
     }
 `;
 
