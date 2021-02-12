@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { signupfetch } from '../reducers/fetch';
 import { Mainwrapper, LightHeading, Form, Label, Input, RegisterButton } from '../Styling/Globalstyling';
