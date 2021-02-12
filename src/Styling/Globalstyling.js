@@ -125,7 +125,7 @@ export const ProjectList = styled.div`
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
-width: 100%;
+width: 85%;
 
 @media (max-width: 850px) {
     margin: 0 0 0 0;
