@@ -10,7 +10,6 @@ import moment from 'moment';
 
 export const Projectlist = () => {
   const PROJECTLIST_URL = 'https://organizeit-app.herokuapp.com/projectlist';
-  // const REMOVEPROJECT_URL = `https://organizeit-app.herokuapp.com/delete/${project._id}`;
   const [projects, setProjects] = useState([]);
   const history = useHistory();
   const accessToken = useSelector((store) => store.user.login.accessToken);
