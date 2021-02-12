@@ -10,7 +10,6 @@ import moment from 'moment';
 
 export const Memberprojectlist = () => {
   const MEMBERLIST_URL = 'https://organizeit-app.herokuapp.com/member';
-  // const GETUSERS_URL = 'https://organizeit-app.herokuapp.com/allusers';
   const [projects, setProjects] = useState([]);
   const history = useHistory();
   const accessToken = useSelector((store) => store.user.login.accessToken);
@@ -30,26 +29,6 @@ export const Memberprojectlist = () => {
         setProjects(data)
       })
   }, [accessToken])
-
-  //GET ALL USERS TO BE ABLE TO SHOW WHO CREATED THE PROJECT
-  // useEffect(() => {
-  //   fetch(GETUSERS_URL,
-  //     {
-  //       method: "GET",
-  //       headers: { Authorization: accessToken, "Content-Type": "application/json" }
-  //     })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       const members = data.map(member => {
-  //         return {
-  //           name: member.name,
-  //           memberId: member._id
-  //         }
-  //       })
-  //       setMembers(members)
-  //       console.log(members)
-  //     })
-  // }, [accessToken])
 
   return (
     <ProjectList>
