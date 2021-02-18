@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
-import { Projectlist } from './Projectlist.js';
-import { Memberprojectlist } from './Memberprojectlist.js';
+import { Projectlist } from '../Components/Projectlist.js';
+import { Memberprojectlist } from '../Components/Memberprojectlist.js';
 import { MainProfile, Heading, H2 } from '../Styling/Globalstyling';
 
 const WelcomeColumn = styled.div`

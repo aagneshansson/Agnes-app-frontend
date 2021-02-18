@@ -20,6 +20,10 @@ padding: 1.5rem;
   @media (max-width: 800px){
     margin: 1rem;
   }
+
+  @media (max-width: 1366) {
+    margin: 0;
+  }
 `;
 
 const RightColumn = styled.div`
@@ -32,6 +36,10 @@ padding: 1.5rem;
   @media (max-width: 800px){
     margin: 1rem;
     visibility: hidden;
+  }
+
+  @media (max-width: 1366px) {
+    margin: 0;
   }
 `;
 

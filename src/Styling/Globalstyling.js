@@ -10,6 +10,9 @@ text-align: center;
 @media (max-width: 800px){
     flex-direction: column;
 }
+
+@media (max-width: 1366px){
+}
 `;
 
 export const SigninWrapper = styled.section`

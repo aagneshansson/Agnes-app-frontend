@@ -74,7 +74,7 @@ export const Header = () => {
                 )}
                 {!accessToken && (
                     <>
-                        <Link to="/signin">
+                        <Link to="/signin" style={{ textDecoration: 'none' }}>
                             <H2light>Sign in</H2light>
                         </Link>
 

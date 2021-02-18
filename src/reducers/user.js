@@ -30,10 +30,6 @@ export const user = createSlice({
             state.login.accessToken = null;
             state.login.secretMessage = null;
         },
-        // setErrorMessage: (state, action) => {
-        //     const { errorMessage } = action.payload;
-        //     state.login.errorMessage = errorMessage;
-        //   },
         setNewProject: (state, action) => {
             const  { projectname } = action.payload;
             state.login.projectname = projectname;
