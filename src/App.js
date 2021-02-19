@@ -8,7 +8,6 @@ import thunk from 'redux-thunk';
 
 import { user } from 'reducers/user.js';
 import { Signup } from './Pages/Signup.js'
-import { StatusMessage } from './Components/Statusmessage.js';
 import { Signin } from 'Pages/Signin.js';
 import { Homepage } from 'Pages/Homepage.js';
 import { Profile } from 'Pages/Profile.js';
@@ -84,10 +83,8 @@ export const App = () => {
             <Route path="/projectpage" exact>
               <EachProject />
             </Route>
-
             <Signup />
             <Signin />
-            <StatusMessage />
           </Switch>
         </BrowserRouter>
       </Provider>

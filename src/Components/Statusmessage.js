@@ -1,5 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+
+const Text = styled.h1`
+color: white;
+`;
 
 export const StatusMessage = () => {
   const statusMessage = useSelector((store) => store.user.login.statusMessage);
@@ -9,12 +14,12 @@ export const StatusMessage = () => {
     <>
       {statusMessage && (
         <div>
-          <p>{`Statusmessage:${statusMessage}`}</p>
+          <Text>{`${statusMessage}`}</Text>
         </div>
       )}
       {errorMessage && (
         <div>
-          <p>{`${errorMessage}`}</p>
+          <Text>{`Errormessage ${errorMessage}`}</Text>
         </div>
       )}
     </>

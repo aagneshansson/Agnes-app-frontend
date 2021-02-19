@@ -29,21 +29,33 @@ export const Projectlist = () => {
         console.log(data)
         setProjects(data)
       })
-      fetchProjects();
-  }, [accessToken])
+  }, [PROJECTLIST_URL, accessToken])
+  // useEffect(() => {
+  //   fetch(PROJECTLIST_URL,
+  //     {
+  //       method: "GET",
+  //       headers: { Authorization: accessToken, "Content-Type": "application/json" }
+  //     })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data)
+  //       setProjects(data)
+  //     })
+  //     fetchProjects();
+  // }, [accessToken])
 
-  const fetchProjects = () => {
-    fetch(PROJECTLIST_URL,
-      {
-        method: "GET",
-        headers: { Authorization: accessToken, "Content-Type": "application/json" }
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        setProjects(data)
-      })
-  }
+  // const fetchProjects = () => {
+  //   fetch(PROJECTLIST_URL,
+  //     {
+  //       method: "GET",
+  //       headers: { Authorization: accessToken, "Content-Type": "application/json" }
+  //     })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data)
+  //       setProjects(data)
+  //     })
+  // }
  
   const handleRemoveProject = (_id) => {
 
@@ -57,7 +69,7 @@ export const Projectlist = () => {
           console.log('Project deleted successfully')
           return json;
         })
-        .finally(() => fetchProjects())
+        // .finally(() => fetchProjects())
       )
   }
 

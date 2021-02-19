@@ -7,6 +7,17 @@ const LOGOUT_URL = 'https://organizeit-app.herokuapp.com/logout';
 export const signupfetch = ( name, password ) => { 
 
     return (dispatch) => {
+
+        const handleSignupSuccess = (json) => {
+            dispatch(user.actions.setUserId({ userId: json.userId }));
+            dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }));
+            dispatch(user.actions.setStatusMessage({ statusMessage: 'Successful Sign Up' }));
+        }
+        const handleSignupFailed = (err) => {
+            dispatch(user.actions.setAccessToken({ accessToken: null }));
+            dispatch(user.actions.setStatusMessage({ statusMessage: 'Failed to signup, please try again!' }));
+            dispatch(user.actions.setErrorMessage({ errorMessage: err }));
+        }
         fetch(SIGNUP_URL, 
         {
             method: "POST",
@@ -19,14 +30,8 @@ export const signupfetch = ( name, password ) => {
             }
             return res.json();
             })
-            .then((json) => {
-                dispatch(user.actions.setUserId({ userId: json.userId }));
-                dispatch(user.actions.setAccessToken({ accessToken: json.accessToken }));
-                dispatch(user.actions.setStatusMessage({ statusMessage: 'Successful Sign Up' }));
-              })
-              .catch((err) => {
-                dispatch(user.actions.setErrorMessage({ errorMessage: err }));
-              });
+            .then((json) => handleSignupSuccess(json))
+            .catch((err) => handleSignupFailed(err))
     };
 }
 

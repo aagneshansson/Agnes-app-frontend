@@ -8,6 +8,7 @@ import { Profile } from './Profile.js';
 import styled from 'styled-components';
 import Lottie from 'lottie-react-web';
 import animationData from 'lotties/firstpagelottie.json';
+import { StatusMessage } from 'Components/Statusmessage';
 
 const LeftColumn = styled.div`
 display: flex;
@@ -58,6 +59,7 @@ export const Homepage = () => {
           Organizing your life is just a click away!
       </Heading>
         <Signup />
+        <StatusMessage />
         <Heading>Already a user?</Heading>
         <Link to="/signin">
           <SigninButton>Sign in</SigninButton>
